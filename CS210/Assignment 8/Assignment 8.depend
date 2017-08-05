@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1430230259 source:/home/clayton/School/CS 210/Assignment 8/main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"cards.h"
+
+1430104124 source:/home/clayton/School/CS 210/Assignment 8/card.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<time.h>
+	"card.h"
+
+1430145050 /home/clayton/School/CS 210/Assignment 8/cards.h
+
+1430104117 /home/clayton/School/CS 210/Assignment 8/card.h
+
+1430145039 source:/home/clayton/School/CS 210/Assignment 8/cards.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<time.h>
+	"cards.h"
+

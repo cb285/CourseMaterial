@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1428889944 source:/home/clayton/School/CS 210/Assignment 7/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

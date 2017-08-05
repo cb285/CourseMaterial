@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1422817458 source:c:\users\clayton\desktop\school\cs 210\assignment 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
