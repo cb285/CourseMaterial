@@ -1,0 +1,41 @@
+﻿<Window x:Class="BlackJackServer.ServerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJackServer"
+        mc:Ignorable="d"
+        Title="Server" Height="387" Width="579">
+    <Grid Margin="0,0,-8,0">
+        <ListBox x:Name="listBox_P1" HorizontalAlignment="Left" Height="100" Margin="6,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="listBox_P2" HorizontalAlignment="Left" Height="100" Margin="121,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="listBox_P3" HorizontalAlignment="Left" Height="100" Margin="236,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="listBox_P4" HorizontalAlignment="Left" Height="100" Margin="351,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="listBox_P5" HorizontalAlignment="Left" Height="100" Margin="466,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="label_P1" Content="Player 1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_P2" Content="Player 2" HorizontalAlignment="Left" Margin="121,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_P3" Content="Player 3" HorizontalAlignment="Left" Margin="236,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_P4" Content="Player 4" HorizontalAlignment="Left" Margin="351,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_P5" Content="Player 5" HorizontalAlignment="Left" Margin="466,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_P1Stat" Content="Not Connected" HorizontalAlignment="Left" Margin="6,36,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P2Stat" Content="Not Connected" HorizontalAlignment="Left" Margin="121,36,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P3Stat" Content="Not Connected" HorizontalAlignment="Left" Margin="236,36,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P4Stat" Content="Not Connected" HorizontalAlignment="Left" Margin="351,36,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P5Stat" Content="Not Connected" HorizontalAlignment="Left" Margin="466,36,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <ListBox x:Name="listBox_Dealer" HorizontalAlignment="Left" Height="100" Margin="236,246,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="label_Dealer" Content="Dealer" HorizontalAlignment="Left" Margin="236,220,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_CardsLeft" Content="0 Cards in shoe" HorizontalAlignment="Left" Margin="6,323,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Bet1" Content="Bet: $0" HorizontalAlignment="Left" Margin="6,174,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_Bet2" Content="Bet: $0" HorizontalAlignment="Left" Margin="121,174,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_Bet3" Content="Bet: $0" HorizontalAlignment="Left" Margin="236,174,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_Bet4" Content="Bet: $0" HorizontalAlignment="Left" Margin="351,174,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_Bet5" Content="Bet: $0" HorizontalAlignment="Left" Margin="466,174,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Button x:Name="button_Start" Content="Start" HorizontalAlignment="Left" Margin="485,326,0,0" VerticalAlignment="Top" Width="75" Click="button_Start_Click"/>
+        <Label x:Name="label_P1Money" Content="$0" HorizontalAlignment="Left" Margin="6,48,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P2Money" Content="$0" HorizontalAlignment="Left" Margin="121,48,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P3Money" Content="$0" HorizontalAlignment="Left" Margin="236,48,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P4Money" Content="$0" HorizontalAlignment="Left" Margin="351,48,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="label_P5Money" Content="$0" HorizontalAlignment="Left" Margin="466,48,0,0" VerticalAlignment="Top" FontSize="8"/>
+
+    </Grid>
+</Window>

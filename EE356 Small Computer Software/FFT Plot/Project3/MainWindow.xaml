@@ -1,0 +1,28 @@
+﻿<Window x:Class="Project3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project3"
+        mc:Ignorable="d"
+        Title="Project 3 - Wav File Plotter" Height="632" Width="1024"
+        Icon="C:\Users\brutu\Documents\School\EE356\Project 3\Project3\icon.png"
+        WindowStartupLocation="CenterScreen">
+    <Grid x:Name="grdFrmCht">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <Button x:Name="but_Open" Content="Open" Width="75" ToolTip="Opens a file choosing window." Click="OpenFile_Click"/>
+                <TextBox x:Name="txtbox_Path" Height="23" TextWrapping="WrapWithOverflow" Text="Filename" MaxWidth="500" ToolTip="Current wav file path." Focusable="False"/>
+            </Menu>
+            <Menu DockPanel.Dock="Top">
+                <Button x:Name="but_Play" Content="Play" Width="75" ToolTip="Plays the wav file that is currently open." Click="Play_Click"/>
+                <Button x:Name="but_Plot" Content="Plot" Width="75" ToolTip="Plots the current wav file in time and frequency." Click="Plot_Click"/>
+                <Button x:Name="but_Clear" Content="Clear" Width="75" ToolTip="Clears the graph of all plots." Click="Clear_Click"/>
+                <ProgressBar x:Name="progressbar" Height="10" Width="200" ToolTip="Progress of fast fourier transform calculation."/>
+            </Menu>
+        </DockPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,55,0,0" Height="545" VerticalAlignment="Top">
+            <Canvas x:Name="cnvChart" HorizontalAlignment="Center" Height="475" VerticalAlignment="Top" Width="960" Loaded="cnvChart_Loaded"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

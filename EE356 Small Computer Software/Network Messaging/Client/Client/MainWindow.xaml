@@ -1,0 +1,23 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Client" Height="350" Width="525" Closing="Window_Closing">
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="497"/>
+        <TextBox x:Name="textBox_Message" HorizontalAlignment="Left" Height="23" Margin="10,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" RenderTransformOrigin="0.25,-0.435" ToolTip="Enter a message to send here." KeyDown="textBox_Message_KeyDown"/>
+        <Button x:Name="button_Send" Content="Send" HorizontalAlignment="Left" Margin="457,215,0,0" VerticalAlignment="Top" Width="50" Height="23" Click="button_Send_Click" ToolTip="Sends the message."/>
+        <TextBox x:Name="textBox_Name" HorizontalAlignment="Left" Height="23" Margin="10,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Enter a username for yourself. Cannot be &quot;server&quot;."/>
+        <Button x:Name="button_Connect" Content="Connect" HorizontalAlignment="Left" Margin="310,286,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="button_Connect_Click" ToolTip="Connects to the server."/>
+        <Label x:Name="label_Name" Content="Name" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_IPAddress" HorizontalAlignment="Left" Height="23" Margin="135,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="127.0.0.1" ToolTip="Enter the IP Address of the server."/>
+        <TextBox x:Name="textBox_Port" HorizontalAlignment="Left" Height="23" Margin="260,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="9090" ToolTip="Enter the port of the server."/>
+        <Label x:Name="label_IP" Content="IP Address" HorizontalAlignment="Left" Margin="135,260,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Port" Content="Port" HorizontalAlignment="Left" Margin="260,260,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button_Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="390,286,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="button_Disconnect_Click" ToolTip="Connects to the server."/>
+
+    </Grid>
+</Window>

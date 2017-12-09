@@ -1,0 +1,30 @@
+﻿<Window x:Class="Project_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_1"
+        mc:Ignorable="d"
+        Title="Project 1: Dictionary Words" Height="366" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="58*"/>
+        </Grid.RowDefinitions>
+        <RadioButton x:Name="rdo_FindWords" Content="Find Words" HorizontalAlignment="Left" Margin="71,47,0,0" VerticalAlignment="Top" IsChecked="True" Grid.Row="1"/>
+        <RadioButton x:Name="rdo_FindAnagrams" Content="Find Anagrams" HorizontalAlignment="Left" Margin="71,62,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <RadioButton x:Name="rdo_FindWildCard" Content="Find Wild Card Sequence" HorizontalAlignment="Left" Margin="71,77,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <RadioButton x:Name="rdo_WordLadder" Content="Word Ladder" HorizontalAlignment="Left" Margin="71,92,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBox x:Name="txtbox_String" HorizontalAlignment="Left" Height="23" Margin="47,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="txtbox_Length" HorizontalAlignment="Left" Height="23" Margin="181,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Grid.Row="1"/>
+        <Button x:Name="bt_Start" Content="Start" HorizontalAlignment="Left" Margin="47,166,0,0" VerticalAlignment="Top" Width="197" Height="57" Click="bt_Start_Click" Grid.Row="1"/>
+        <TextBox x:Name="txtbox_Output" HorizontalAlignment="Left" Height="219" Margin="282,45,0,0" TextWrapping="Wrap" Text="Output" VerticalAlignment="Top" Width="200" Grid.Row="1" FontSize="18"/>
+        <Button x:Name="but_Pickfile" Content="Custom List" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Width="75" Click="but_Pickfile_Click"/>
+        <TextBox x:Name="txtbox_Path" HorizontalAlignment="Left" Height="23" Margin="38,35,0,0" TextWrapping="Wrap" Text="Custom List Path" VerticalAlignment="Top" Width="217" FontSize="10" Grid.RowSpan="2"/>
+        <CheckBox x:Name="cb_CustPath" Content="Use Custom List" HorizontalAlignment="Left" Margin="118,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.562,1.133"/>
+        <Label x:Name="lab_String" Content="String" HorizontalAlignment="Left" Margin="47,107,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label x:Name="lab_Length" Content="Length" HorizontalAlignment="Left" Margin="181,107,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Button x:Name="bt_About" Content="About" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Margin="347,20,0,0" Click="bt_About_Click"/>
+        <Button x:Name="bt_Help" Content="Help" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Margin="418,20,0,0" Click="bt_Help_Click"/>
+    </Grid>
+</Window>

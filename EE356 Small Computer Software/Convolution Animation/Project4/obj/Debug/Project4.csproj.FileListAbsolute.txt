@@ -1,0 +1,28 @@
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\bin\Debug\Project4.exe.config
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\bin\Debug\Project4.exe
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\bin\Debug\Project4.pdb
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.csprojResolveAssemblyReference.cache
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4_MarkupCompile.lref
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\MainWindow.baml
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.g.resources
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.Properties.Resources.resources
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.csproj.GenerateResource.Cache
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.exe
+C:\Users\brutu\Documents\School\EE356\Project4\Project4\obj\Debug\Project4.pdb
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\bin\Debug\Project4.exe.config
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.exe
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.pdb
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\bin\Debug\Project4.exe
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\bin\Debug\Project4.pdb
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.csprojResolveAssemblyReference.cache
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4_MarkupCompile.lref
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\MainWindow.baml
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.g.resources
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.Properties.Resources.resources
+C:\Users\brutu\Documents\School\EE356\Project 4\Project4\obj\Debug\Project4.csproj.GenerateResource.Cache

@@ -1,0 +1,14 @@
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\bin\Debug\Server.exe.config
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\bin\Debug\Server.exe
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\bin\Debug\Server.pdb
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server_MarkupCompile.lref
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\MainWindow.baml
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.g.resources
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.csproj.GenerateResource.Cache
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.exe
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.pdb
+C:\Users\brutu\Documents\School\EE356\Project 5\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache

@@ -1,0 +1,14 @@
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2_MarkupCompile.lref
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\bin\Debug\Project2.exe.config
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\bin\Debug\Project2.exe
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\bin\Debug\Project2.pdb
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\MainWindow.baml
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.g.resources
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.Properties.Resources.resources
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.csproj.GenerateResource.Cache
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.exe
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.pdb
+C:\Users\brutu\Documents\School\EE356\Project2\Project2\obj\Debug\Project2.csprojResolveAssemblyReference.cache

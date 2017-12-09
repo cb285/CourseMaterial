@@ -1,0 +1,17 @@
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\bin\Debug\BlackJack Client.exe.config
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\bin\Debug\BlackJack Client.exe
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\bin\Debug\BlackJack Client.pdb
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.csprojResolveAssemblyReference.cache
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client_MarkupCompile.lref
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\MainWindow.baml
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.g.resources
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack_Client.Properties.Resources.resources
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.csproj.GenerateResource.Cache
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.exe
+C:\Users\brutu\Documents\School\EE356\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.pdb
+C:\Users\brutu\Documents\School\EE356\BlackJack\BlackJack Client\BlackJack Client\bin\Debug\BlackJack Client.exe.config
+C:\Users\brutu\Documents\School\EE356\BlackJack\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.exe
+C:\Users\brutu\Documents\School\EE356\BlackJack\BlackJack Client\BlackJack Client\obj\Debug\BlackJack Client.pdb

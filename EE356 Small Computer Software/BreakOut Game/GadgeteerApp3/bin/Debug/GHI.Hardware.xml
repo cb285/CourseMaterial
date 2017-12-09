@@ -1,0 +1,1826 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GHI.Hardware</name>
+    </assembly>
+    <members>
+        <member name="T:GHI.IO.Audio">
+            <summary>Helper methods for audio.</summary>
+        </member>
+        <member name="M:GHI.IO.Audio.PlayPcm(Microsoft.SPOT.Hardware.Cpu.AnalogOutputChannel,System.Byte[],System.Int32)">
+            <summary>Allows wav file playback through an AnalogOutputChannel</summary>
+            <param name="channel">The channel through which to play the audio.</param>
+            <param name="data">The wav file buffer.</param>
+            <param name="dataRate">The frequency in hertz at which to play the file.</param>
+        </member>
+        <member name="M:GHI.IO.Audio.PlayPcm(Microsoft.SPOT.Hardware.Cpu.AnalogOutputChannel,System.Byte[],System.Int32,System.Int32,System.Int32)">
+            <summary>Allows wav file playback through an AnalogOutputChannel</summary>
+            <param name="channel">The channel through which to play the audio.</param>
+            <param name="data">The wav file buffer.</param>
+            <param name="offset">The offset into the array at which to begin playing.</param>
+            <param name="count">The size of the data from the buffer to play.</param>
+            <param name="dataRate">The frequency in hertz at which to play the file.</param>
+        </member>
+        <member name="T:GHI.IO.PulseFeedback">
+            <summary>Reads a pulse from an external device. See https://www.ghielectronics.com/docs/326/ for more information.</summary>
+            <remarks>All managed threads are blocked while reading.</remarks>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.#ctor(GHI.IO.PulseFeedback.Mode,System.Boolean,System.Int32,Microsoft.SPOT.Hardware.Cpu.Pin)">
+            <summary>Constructs a new object that pulses and echos on the same pin with the same state.</summary>
+            <param name="mode">The mode to use when reading.</param>
+            <param name="pulseState">The state of the initial pulse.</param>
+            <param name="pulseLength">The length in microseconds of the initial pulse.</param>
+            <param name="pulsePin">The pin on which to send the pulse and read.</param>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.#ctor(GHI.IO.PulseFeedback.Mode,System.Boolean,System.Int32,Microsoft.SPOT.Hardware.Cpu.Pin,System.Boolean,Microsoft.SPOT.Hardware.Cpu.Pin)">
+            <summary>Constructs a new object to pulse and echo on the given pins.</summary>
+            <param name="mode">The mode to use when reading.</param>
+            <param name="pulseState">The state of the initial pulse.</param>
+            <param name="pulseLength">The length in microseconds of the initial pulse.</param>
+            <param name="pulsePin">The pin on which to send the pulse.</param>
+            <param name="echoState">The state of the echo for which to wait.</param>
+            <param name="echoPin">The pin on which to measure the echo.</param>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.Read">
+            <summary>Performs a read operation based on the mode.</summary>
+            <returns>The length of the time in microseconds, -1 if it timed out.</returns>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.Dispose">
+            <summary>Disposes the object.</summary>
+        </member>
+        <member name="M:GHI.IO.PulseFeedback.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.IO.PulseFeedback.ReadTimeout">
+            <summary>How long to let the measure operation wait in milliseconds until returning an error.</summary>
+        </member>
+        <member name="P:GHI.IO.PulseFeedback.ResistorMode">
+            <summary>The resistor mode to use when switching to input and reading a pulse on a pin.</summary>
+        </member>
+        <member name="P:GHI.IO.PulseFeedback.PulseLength">
+            <summary>The length in microseconds of the initial pulse.</summary>
+        </member>
+        <member name="T:GHI.IO.PulseFeedback.Mode">
+            <summary>
+            The read modes.
+            </summary>
+        </member>
+        <member name="F:GHI.IO.PulseFeedback.Mode.DrainDuration">
+            <summary>
+            Read how long it takes for a pin to drain to its opposite state after a pulse.
+            </summary>
+        </member>
+        <member name="F:GHI.IO.PulseFeedback.Mode.EchoDuration">
+            <summary>
+            Read how long an echo pulse is.
+            </summary>
+        </member>
+        <member name="F:GHI.IO.PulseFeedback.Mode.DurationUntilEcho">
+            <summary>
+            Read how long it takes to receive an echo pulse.
+            </summary>
+        </member>
+        <member name="T:GHI.Processor.Configuration">
+            <summary>Provides access to the device's underlying configuration sector.</summary>
+        </member>
+        <member name="M:GHI.Processor.Configuration.Read">
+            <summary>Reads the configuration.</summary>
+            <returns>The configuration.</returns>
+        </member>
+        <member name="M:GHI.Processor.Configuration.Read(System.Byte[])">
+            <summary>Reads the configuration into the given buffer.</summary>
+            <param name="buffer">The buffer to read into.</param>
+            <returns>Whether or not the configuration was successfully read.</returns>
+        </member>
+        <member name="M:GHI.Processor.Configuration.Write(System.Byte[])">
+            <summary>Writes the given buffer to the configuration sector.</summary>
+            <param name="buffer">The buffer to write.</param>
+            <returns>Whether or not the configuration was successfully written.</returns>
+            <remarks>
+            Make sure the buffer is one you have previously read from the same type of device. It is not advised to write a configuration read from a
+            previous firmware version.
+            </remarks>
+        </member>
+        <member name="M:GHI.Processor.Configuration.GetEntrySize(System.String)">
+            <summary>
+            Gets the total size of the entry specified by name.
+            </summary>
+            <param name="name">The name of the entry.</param>
+            <returns>The size. A size of 0 means no entry was found.</returns>
+        </member>
+        <member name="M:GHI.Processor.Configuration.ReadEntry(System.String)">
+            <summary>
+            Reads the configuration entry specified by name.
+            </summary>
+            <param name="name">The name of the entry.</param>
+            <returns>The entry, null if not found.</returns>
+        </member>
+        <member name="M:GHI.Processor.Configuration.ReadEntry(System.String,System.Byte[])">
+            <summary>
+            Reads the configuration entry specified by name.
+            </summary>
+            <param name="name">The name of the entry.</param>
+            <param name="buffer">The buffer to read into.</param>
+            <returns>Whether or not the entry was found and read.</returns>
+        </member>
+        <member name="M:GHI.Processor.Configuration.WriteEntry(System.String,System.Byte[])">
+            <summary>
+            Writes the configuration entry specified by name.
+            </summary>
+            <param name="name">The entry name.</param>
+            <param name="buffer">The buffer to write from.</param>
+            <returns>Whether or not the entry was written.</returns>
+        </member>
+        <member name="P:GHI.Processor.Configuration.TotalSize">
+            <summary>The size of the configuration sector.</summary>
+        </member>
+        <member name="P:GHI.Processor.Configuration.MaximumNameLength">
+            <summary>The maximum length of a config entry name.</summary>
+        </member>
+        <member name="T:GHI.Processor.ManufacturerUse">
+            <summary>Do not use.</summary>
+        </member>
+        <member name="M:GHI.Processor.ManufacturerUse.Configure(System.UInt32,System.Byte[])">
+            <summary>Do not use.</summary>
+            <param name="id">Do not use.</param>
+            <param name="parameter">Do not use.</param>
+        </member>
+        <member name="T:GHI.Processor.AddressSpace">
+            <summary>Provides access to the address space.</summary>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Write(System.UInt32,System.Byte)">
+            <summary>Writes a byte to the given address.</summary>
+            <param name="address">The address at which to write.</param>
+            <param name="value">The byte to write.</param>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Read(System.UInt32)">
+            <summary>Reads a single byte from the given address</summary>
+            <param name="address">The address from which to read.</param>
+            <returns>The byte read.</returns>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Write(System.UInt32,System.Byte[])">
+            <summary>Writes the given buffer to the given address.</summary>
+            <param name="address">The address at which to begin writing.</param>
+            <param name="buffer">The buffer to write.</param>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Read(System.UInt32,System.Byte[])">
+            <summary>Reads from the given address into the given buffer.</summary>
+            <param name="address">The address from which to read.</param>
+            <param name="buffer">The buffer into which to read.</param>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Read(System.UInt32,System.Int32)">
+            <summary>Reads from the given address into the given buffer.</summary>
+            <param name="address">The address from which to read.</param>
+            <param name="count">The number of bytes to write.</param>
+            <returns>The array of bytes read.</returns>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Write(System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>Writes the given buffer to the given address.</summary>
+            <param name="address">The address at which to begin writting.</param>
+            <param name="buffer">The buffer to write.</param>
+            <param name="offset">The offset into the buffer from which to begin reading.</param>
+            <param name="count">The number of bytes to write.</param>
+        </member>
+        <member name="M:GHI.Processor.AddressSpace.Read(System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>Reads from the given address into the given buffer.</summary>
+            <param name="address">The address from which to read.</param>
+            <param name="buffer">The buffer into which to read.</param>
+            <param name="offset">The offset into the buffer at which to begin writing.</param>
+            <param name="count">The number of bytes to read.</param>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork">
+            <summary>Provides access Controller Area Network (CAN) bus. See https://www.ghielectronics.com/docs/110/ for more information.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.#ctor(System.Int32,GHI.IO.ControllerAreaNetwork.Speed)">
+            <summary>Creates a new CAN instance calculating the timings needed to match the given speed.</summary>
+            <param name="channel">The CAN channel.</param>
+            <param name="baudRate">The baudrate of the bus in kilobits per second.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.#ctor(System.Int32,GHI.IO.ControllerAreaNetwork.Timings)">
+            <summary>Creates a new CAN instance with the given timings.</summary>
+            <param name="channel">The CAN channel.</param>
+            <param name="timings">The bus timings.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.#ctor(GHI.IO.ControllerAreaNetwork.Channel,GHI.IO.ControllerAreaNetwork.Speed)">
+            <summary>Creates a new CAN instance calculating the timings needed to match the given speed.</summary>
+            <param name="channel">The CAN channel.</param>
+            <param name="baudRate">The baudrate of the bus in kilobits per second.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.#ctor(GHI.IO.ControllerAreaNetwork.Channel,GHI.IO.ControllerAreaNetwork.Timings)">
+            <summary>Creates a new CAN instance with the given timings.</summary>
+            <param name="channel">The CAN channel.</param>
+            <param name="timings">The bus timings.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Dispose">
+            <summary>Disposes the object.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Reset">
+            <summary>Resets the CAN controller.</summary>
+            <remarks>All hardware buffered messages will be lost. The software receive buffer is not affected.</remarks>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.SetExplicitFilters(System.UInt32[])">
+            <summary>Sets the explicit filters.</summary>
+            <param name="filters">The message ids to filter.</param>
+            <remarks>Any id not matching one of the filters is discarded. Pass null to disable the filter.</remarks>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.SetGroupFilters(System.UInt32[],System.UInt32[])">
+            <summary>Sets group filters.</summary>
+            <param name="lowerBounds">The lower bounds to filter</param>
+            <param name="upperBounds">The upper bounds to filter</param>
+            <remarks>
+            Each entry in lowerBounds corresponds to the same-indexed entry in upperBounds. The provided bounds are valid ids (the range is
+            inclusive). Any id not matching one of the filters is discarded. Pass null to disable the filter.
+            </remarks>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.ReadMessage">
+            <summary>Waits for one message to be received and returns that message.</summary>
+            <returns>The new message.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.ReadMessage(System.Int32)">
+            <summary>Waits for one message to be received and returns that message.</summary>
+            <param name="timeout">How long to wait for a message before returning null. Pass 0 to wait forever.</param>
+            <returns>The new message.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.ReadMessages">
+            <summary>Returns all available messages.</summary>
+            <returns>The messages.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.ReadMessages(GHI.IO.ControllerAreaNetwork.Message[])">
+            <summary>Reads any available messages into the given buffer.</summary>
+            <param name="buffer">The buffer into which the messages will be read.</param>
+            <returns>The number of messages read.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.ReadMessages(GHI.IO.ControllerAreaNetwork.Message[],System.Int32,System.Int32)">
+            <summary>Reads any available messages into the given buffer.</summary>
+            <param name="buffer">The buffer into which the messages will be read.</param>
+            <param name="offset">The offset into the buffer at which the messages will be read.</param>
+            <param name="count">The number of messages to read.</param>
+            <returns>The number of messages read.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.SendMessage(GHI.IO.ControllerAreaNetwork.Message)">
+            <summary>Sends the given CAN message.</summary>
+            <param name="message">The message to send.</param>
+            <returns>Whether the message was added to the transmission queue or not.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.SendMessages(GHI.IO.ControllerAreaNetwork.Message[])">
+            <summary>Sends the given buffer of CAN messages.</summary>
+            <param name="buffer">The messages to send.</param>
+            <returns>The number of sent messages.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.SendMessages(GHI.IO.ControllerAreaNetwork.Message[],System.Int32,System.Int32)">
+            <summary>Sends the given buffer of CAN messages.</summary>
+            <param name="buffer">The messages to send.</param>
+            <param name="offset">The offset into the buffer from which to begin sending.</param>
+            <param name="count">The number of messages to send.</param>
+            <returns>The number of sent messages.</returns>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.DiscardIncomingMessages">
+            <summary>Discards all incoming messages.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="E:GHI.IO.ControllerAreaNetwork.MessageAvailable">
+            <summary>This event is fired when data is received on the CAN bus. It will keep firing while there are unread messages.</summary>
+        </member>
+        <member name="E:GHI.IO.ControllerAreaNetwork.ErrorReceived">
+            <summary>This event is fired when there is an error on the CAN bus.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.SourceClock">
+            <summary>The source clock rate for CAN in hertz.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.BaudRateTimings">
+            <summary>The timings used for the baud-rate.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Enabled">
+            <summary>Enables or disables the CAN channel. No events will be received or data buffered while disabled.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.UsedChannel">
+            <summary>The CAN channel this object uses.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.ReceiveBufferSize">
+            <summary>Sets the internal receive buffer size. Enabled must be false before setting this.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.CanSend">
+            <summary>Whether or not transmission is currently possible.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.AvailableMessages">
+            <summary>The number of received messages available.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.IsTransmitBufferEmpty">
+            <summary>Whether or not the transmit buffer is empty.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.ReceiveErrorCount">
+            <summary>The number of receive errors encountered.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.TransmitErrorCount">
+            <summary>The number of transmit errors encountered.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.MessageAvailableEventHandler">
+            <summary>MessageAvailable event handler.</summary>
+            <param name="sender">The Can object on which the message is available.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.ErrorReceivedEventHandler">
+            <summary>ErrorReceived event handler.</summary>
+            <param name="sender">The Can object on which the error occured.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.Speed">
+            <summary>Precalculated speeds</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Speed.Kbps125">
+            <summary>125 kilobits per second.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Speed.Kbps250">
+            <summary>250 kilobits per second.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Speed.Kbps500">
+            <summary>500 kilobits per second.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Speed.Kbps1000">
+            <summary>1000 kilobits per second.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.Error">
+            <summary>Possible CAN errors.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Error.Overrun">
+            <summary>A CAN message was lost because the hardware was not able to receive the message in time.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Error.RXOver">
+            <summary>
+            A CAN message was lost because the receive buffer is full. Try increasing the receive message buffer in the CAN constructor and use
+            CAN filters.
+            </summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Error.BusOff">
+            <summary>A CAN bus off condition was encountered. The controller is disabled in this case. Use Reset() to re-enable it.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Error.ErrorPassive">
+            <summary>An error passive condition was encountered.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.Channel">
+            <summary>The available CAN channels.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Channel.One">
+            <summary>The first CAN channel.</summary>
+        </member>
+        <member name="F:GHI.IO.ControllerAreaNetwork.Channel.Two">
+            <summary>The second CAN channel.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.MessageAvailableEventArgs">
+            <summary>Event arguments for the MessageAvailable event.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.MessageAvailableEventArgs.MessagesAvailable">
+            <summary>The number of messages available to be read.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.ErrorReceivedEventArgs">
+            <summary>Event arguments for the ErrorReceived event.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.ErrorReceivedEventArgs.Error">
+            <summary>The error that occured.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.Message">
+            <summary>A CAN message.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Message.#ctor">
+            <summary>Constructs a new message.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Message.#ctor(System.UInt32)">
+            <summary>Constructs a new message with no data.</summary>
+            <param name="arbitrationId">The arbitration id.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Message.#ctor(System.UInt32,System.Byte[])">
+            <summary>Constructs a new message.</summary>
+            <param name="arbitrationId">The arbitration id.</param>
+            <param name="data">The message data.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Message.#ctor(System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>Constructs a new message.</summary>
+            <param name="arbitrationId">The arbitration id.</param>
+            <param name="data">The message data.</param>
+            <param name="offset">The offset into the buffer from which to create the message.</param>
+            <param name="count">The number of bytes in the message.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Message.#ctor(System.UInt32,System.Byte[],System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>Constructs a new message.</summary>
+            <param name="arbitrationId">The arbitration id.</param>
+            <param name="data">The message data.</param>
+            <param name="offset">The offset into the buffer from which to create the message.</param>
+            <param name="count">The number of bytes in the message.</param>
+            <param name="isRTR">If the message is a remote transmission request.</param>
+            <param name="isEID">If the id is an extended id.</param>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.ArbitrationId">
+            <summary>The message arbitration id.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.Length">
+            <summary>The number of bytes in the message.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.IsRemoteTransmissionRequest">
+            <summary>Whether or not the message is a remote transmission request.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.IsExtendedId">
+            <summary>Whether or not the message uses an extended id.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.TimeStamp">
+            <summary>When the message was received.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Message.Data">
+            <summary>The message data. It must be eight bytes.</summary>
+        </member>
+        <member name="T:GHI.IO.ControllerAreaNetwork.Timings">
+            <summary>Represents CAN bus timings.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Timings.#ctor">
+            <summary>Creates a new instance with the timings set to zero.</summary>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Timings.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Creates a new instance with the given timings.</summary>
+            <param name="propagation">The propogation length in time-quanta.</param>
+            <param name="phase1">The phase one length in time-quanta.</param>
+            <param name="phase2">The phase two length in time-quanta.</param>
+            <param name="brp">The baudrate prescaler value.</param>
+            <param name="synchronizationJumpWidth">The synchronization jump width time-quanta.</param>
+        </member>
+        <member name="M:GHI.IO.ControllerAreaNetwork.Timings.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>Creates a new instance with the given timings.</summary>
+            <param name="propagation">The propogation length in time-quanta.</param>
+            <param name="phase1">The phase one length in time-quanta.</param>
+            <param name="phase2">The phase two length in time-quanta.</param>
+            <param name="brp">The baudrate prescaler value.</param>
+            <param name="synchronizationJumpWidth">The synchronization jump width time-quanta.</param>
+            <param name="useMultiBitSampling">Whether or not to use multiple bit samples.</param>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.Propagation">
+            <summary>The propagation value.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.Phase1">
+            <summary>The phase one length in time-quanta.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.Phase2">
+            <summary>The phase two length in time-quanta.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.Brp">
+            <summary>The baudrate prescaler value.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.SynchronizationJumpWidth">
+            <summary>The synchronization jump width time-quanta.</summary>
+        </member>
+        <member name="P:GHI.IO.ControllerAreaNetwork.Timings.UseMultiBitSampling">
+            <summary>Whether or not to use multiple bit samples.</summary>
+        </member>
+        <member name="T:GHI.Processor.StartupLogo">
+            <summary>Configures the image that is displayed on device powerup.</summary>
+        </member>
+        <member name="M:GHI.Processor.StartupLogo.Save">
+            <summary>Saves the startup logo configuration to the device.</summary>
+            <returns>Whether or not a reboot is required for the possible changes to take effect.</returns>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.Enabled">
+            <summary>Whether or not logo display is enabled.</summary>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.X">
+            <summary>The X coordinate of the logo.</summary>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.Y">
+            <summary>The Y coordinate of the logo.</summary>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.SupportedWidth">
+            <summary>The supported width of the logo.</summary>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.SupportedHeight">
+            <summary>The supported height of the logo.</summary>
+        </member>
+        <member name="P:GHI.Processor.StartupLogo.Image">
+            <summary>The image to display as the logo.</summary>
+        </member>
+        <member name="T:GHI.Processor.Display">
+            <summary>Configures the device display.</summary>
+        </member>
+        <member name="M:GHI.Processor.Display.Disable">
+            <summary>Turns off the display controller.</summary>
+            <returns>Whether or not a reboot is required for the possible changes to take effect.</returns>
+        </member>
+        <member name="M:GHI.Processor.Display.Save">
+            <summary>Saves the display configuration to the device.</summary>
+            <returns>Whether or not a reboot is required for the possible changes to take effect.</returns>
+        </member>
+        <member name="M:GHI.Processor.Display.Populate(GHI.Processor.Display.GHIDisplay)">
+            <summary>
+            Populates the display configuration values with the values needed by the specified display. This method can only be used to populate the
+            values for displays made by GHI. If you have a custom display you must populate the values yourself.
+            </summary>
+            <param name="display">The display model.</param>
+        </member>
+        <member name="M:GHI.Processor.Display.SetTouchPins(Microsoft.SPOT.Hardware.Cpu.AnalogChannel,Microsoft.SPOT.Hardware.Cpu.AnalogChannel,Microsoft.SPOT.Hardware.Cpu.Pin,Microsoft.SPOT.Hardware.Cpu.Pin)">
+            <summary>Sets the four touch controller pins. They are restored to their default on power up.</summary>
+            <param name="yu">The analog channel on the YU pin.</param>
+            <param name="xl">The analog channel on the XL pin.</param>
+            <param name="yd">The YD pin.</param>
+            <param name="xr">The XR pin.</param>
+            <returns>Whether or not the pins were set successfully.</returns>
+        </member>
+        <member name="P:GHI.Processor.Display.Type">
+            <summary>The display type.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.SpiModule">
+            <summary>The spi configuration for the display.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.ChipSelectPin">
+            <summary>The display chip select pin (usually used with SPI displays).</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.ControlPin">
+            <summary>The display control pin (usually used with SPI displays).</summary>
+            <remarks>
+            If this pin is set, the display will be initialized with a default configuration and the draw window will be set when flushing.
+            If this pin is not set, only the bitmap data is copied out over SPI.
+            </remarks>
+        </member>
+        <member name="P:GHI.Processor.Display.BacklightPin">
+            <summary>The display backlight pin (usually used with SPI displays).</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.ResetPin">
+            <summary>The display reset pin (usually used with SPI displays).</summary>
+            <remarks>If this pin is set, it will be set low for 200ms and then set high when you first call flush before the first initialization.</remarks>
+        </member>
+        <member name="P:GHI.Processor.Display.Bpp">
+            <summary>The display bits per pixel.</summary>
+            <remarks>Can be used to swap the color order on displays such as the Display N18 which can have red and blue reversed.</remarks>
+        </member>
+        <member name="P:GHI.Processor.Display.Width">
+            <summary>The display width.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.Height">
+            <summary>The display height.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.OutputEnableIsFixed">
+            <summary>True if LCD enable is a fixed state, false if LCD enable is managed by LCD controller.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.OutputEnablePolarity">
+            <summary>Whether active state is high or not.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.HorizontalSyncPolarity">
+            <summary>Whether active state is high or not.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.VerticalSyncPolarity">
+            <summary>Whether active state is high or not.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.PixelPolarity">
+            <summary>True if the LCD clocks data on the rising edge of the LCD clock, false if on the falling edge.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.HorizontalSyncPulseWidth">
+            <summary>The horizontal sync pulse width in clock cycles.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.HorizontalBackPorch">
+            <summary>The horizontal back porch in clock cycles.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.HorizontalFrontPorch">
+            <summary>The horizontal front porch in clock cycles.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.VerticalSyncPulseWidth">
+            <summary>The vertical sync pulse width given by number of lines.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.VerticalBackPorch">
+            <summary>The vertical back porch given by number of lines.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.VerticalFrontPorch">
+            <summary>The vertical front porch given by number of lines.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.PixelClockRateKHz">
+            <summary>The pixel clock rate.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.ShowBootupMessages">
+            <summary>Whether or not the display shows boot messages.</summary>
+        </member>
+        <member name="P:GHI.Processor.Display.CurrentRotation">
+            <summary>The current display rotation.</summary>
+            <remarks>
+            The change in dimensions and rotation is done in software and consumes CPU processing time when graphics are flushed to the display and
+            will reduce performance as a result. When the display is rotated, touch events are rotated as well. You will need to calibrate touch after
+            rotation. Rotation settings are done dynamically. There is no need to reboot and they are saved internally.
+            </remarks>
+        </member>
+        <member name="T:GHI.Processor.Display.Rotation">
+            <summary>The display rotation possibilities.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.Rotation.Normal">
+            <summary>Normal.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.Rotation.Clockwise90">
+            <summary>Rotate the display 90 degrees clockwise.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.Rotation.Half">
+            <summary>Rotate the display 180 degrees.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.Rotation.CounterClockwise90">
+            <summary>Rotate the display 90 degrees counter-clockwise.</summary>
+        </member>
+        <member name="T:GHI.Processor.Display.GHIDisplay">
+            <summary>
+            Displays made by GHI Electronics that can be used to populate the display configuration values. Displays not made by GHI Electronics still
+            function properly, but you will have to manually configue the display parameters.
+            </summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayCP7">
+            <summary>Display CP7</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayN7">
+            <summary>Display N7</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayT43">
+            <summary>Display T43</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayTE35">
+            <summary>Display TE35</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayT35">
+            <summary>Display T35</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.GHIDisplay.DisplayN18">
+            <summary>Display N18</summary>
+        </member>
+        <member name="T:GHI.Processor.Display.DisplayType">
+            <summary>Possible display controller types.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.DisplayType.Lcd">
+            <summary>LCD based display.</summary>
+        </member>
+        <member name="F:GHI.Processor.Display.DisplayType.Spi">
+            <summary>SPI based display.</summary>
+        </member>
+        <member name="T:GHI.Utilities.Bitmaps">
+            <summary>Helper methods for bitmaps.</summary>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.RequiredBufferSize(Microsoft.SPOT.Bitmap,GHI.Utilities.Bitmaps.BitsPerPixel)">
+            <summary>Returns the size of a buffer needed to hold this bitmap after calling Convert(bitmap, bpp, outputBuffer);</summary>
+            <param name="bitmap">The bitmap that is to be converted.</param>
+            <param name="bpp">The BPP to which the bitmap will be converted.</param>
+            <returns>The size in bytes of the buffer required to hold the converted bitmap</returns>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.Convert(Microsoft.SPOT.Bitmap,GHI.Utilities.Bitmaps.BitsPerPixel)">
+            <summary>Converts a NETMF Bitmap into a different BPP representation.</summary>
+            <param name="bitmap">The bitmap to convert.</param>
+            <param name="bpp">The target BPP representation.</param>
+            <returns>The converted bitmap.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.Convert(Microsoft.SPOT.Bitmap,GHI.Utilities.Bitmaps.BitsPerPixel,System.Byte[])">
+            <summary>Converts a NETMF Bitmap into a different BPP representation.</summary>
+            <param name="bitmap">The bitmap to convert.</param>
+            <param name="bpp">The target BPP representation.</param>
+            <param name="outputBuffer">The buffer in which to save the converted bitmap.</param>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.ConvertToFile(Microsoft.SPOT.Bitmap)">
+            <summary>Converts a NETMF Bitmap into a BMP file that can be later saved to a file or to the network.</summary>
+            <param name="bitmap">The bitmap to save.</param>
+            <returns>The converted bitmap.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.ConvertToFile(Microsoft.SPOT.Bitmap,System.Byte[])">
+            <summary>Converts a NETMF Bitmap into a BMP file that can be later saved to a file or to the network.</summary>
+            <param name="bitmap">The bitmap to save.</param>
+            <param name="outputBuffer">The buffer into the which the file will be written. Its size must be bitmap.Width * bitmap.Height * 3 + 54.</param>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.GetBuffer(Microsoft.SPOT.Bitmap,System.Byte[])">
+            <summary>Gets the internal buffer of the passed bitmap without making an intermediate array.</summary>
+            <param name="bitmap">The bitmap to copy from.</param>
+            <param name="buffer">The buffer to copy into. Its size must be 2 * bitmap.Width * bitmap.Height.</param>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.GetBuffer(Microsoft.SPOT.Bitmap,System.UInt16[])">
+            <summary>Gets the internal buffer of the passed bitmap without making an intermediate array.</summary>
+            <param name="bitmap">The bitmap to copy from.</param>
+            <param name="buffer">The buffer to copy into. Its size must be bitmap.Width * bitmap.Height.</param>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.SetBuffer(Microsoft.SPOT.Bitmap,System.Byte[])">
+            <summary>Sets the internal buffer of the passed bitmap.</summary>
+            <param name="bitmap">The bitmap to copy into.</param>
+            <param name="buffer">The buffer to copy from. Its size must be 2 * bitmap.Width * bitmap.Height.</param>
+        </member>
+        <member name="M:GHI.Utilities.Bitmaps.SetBuffer(Microsoft.SPOT.Bitmap,System.UInt16[])">
+            <summary>Sets the internal buffer of the passed bitmap.</summary>
+            <param name="bitmap">The bitmap to copy into.</param>
+            <param name="buffer">The buffer to copy from. Its size must be bitmap.Width * bitmap.Height.</param>
+        </member>
+        <member name="T:GHI.Utilities.Bitmaps.BitsPerPixel">
+            <summary>Bits per pixel type.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP1_x128">
+            <summary>1 BPP. The 1-bit pixel is set if the bitmap pixel has any color besides black.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP8_RGB">
+            <summary>8 BPP with RGB 3:3:2.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP8_RED">
+            <summary>8 BPP from red channel.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP8_GREEN">
+            <summary>8 BPP from green channel.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP8_BLUE">
+            <summary>8 BPP from blue channel.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP16_RGB_BE">
+            <summary>Big Endian 16 BPP with RGB 5:6:5.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP16_RGB_LE">
+            <summary>Little Endian 16 BPP with RGB 5:6:5.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP16_BGR_BE">
+            <summary>Big Endian 16 BPP with BGR 5:6:5.</summary>
+        </member>
+        <member name="F:GHI.Utilities.Bitmaps.BitsPerPixel.BPP16_BGR_LE">
+            <summary>Little Endian 16 BPP with BGR 5:6:5.</summary>
+        </member>
+        <member name="T:GHI.Utilities.Crc">
+            <summary>Methods to calculate a cyclic redundancy check (CRC).</summary>
+        </member>
+        <member name="M:GHI.Utilities.Crc.Crc16(System.Byte[],System.UInt16)">
+            <summary>Computes the CRC of the given buffer using CRC-16-CCITT.</summary>
+            <param name="buffer">The data for which to compute the CRC.</param>
+            <param name="seed">The seed used in the calculation.</param>
+            <returns>The CRC for the given buffer.</returns>
+            <remarks>This is used in XMODEM and many others.</remarks>
+        </member>
+        <member name="M:GHI.Utilities.Crc.Crc32(System.Byte[],System.UInt32)">
+            <summary>Computes the CRC of the given buffer using CRC-32.</summary>
+            <param name="buffer">The data for which to compute the CRC.</param>
+            <param name="seed">The seed used in the calculation.</param>
+            <returns>The CRC for the given buffer.</returns>
+            <remarks>This is used in ZMODEM and many others.</remarks>
+        </member>
+        <member name="M:GHI.Utilities.Crc.Crc16(System.Byte[],System.Int32,System.Int32,System.UInt16)">
+            <summary>Computes the CRC of the given buffer using CRC-16-CCITT.</summary>
+            <param name="buffer">The data for which to compute the CRC.</param>
+            <param name="offset">The offset into the buffer to start computng.</param>
+            <param name="count">The number of bytes to use in the calculation.</param>
+            <param name="seed">The seed used in the calculation.</param>
+            <returns>The CRC for the given buffer.</returns>
+            <remarks>This is used in XMODEM and others.</remarks>
+        </member>
+        <member name="M:GHI.Utilities.Crc.Crc32(System.Byte[],System.Int32,System.Int32,System.UInt32)">
+            <summary>Computes the CRC of the given buffer using CRC-32.</summary>
+            <param name="buffer">The data for which to compute the CRC.</param>
+            <param name="offset">The offset into the buffer to start computng.</param>
+            <param name="count">The number of bytes to use in the calculation.</param>
+            <param name="seed">The seed used in the calculation.</param>
+            <returns>The CRC for the given buffer.</returns>
+            <remarks>This is used in ZMODEM and others.</remarks>
+        </member>
+        <member name="T:GHI.Processor.DeviceType">
+            <summary>System model types.</summary>
+            <remarks>To get the system model type use Microsoft.SPOT.Hardware.SystemInfo.SystemID.Model.</remarks>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.EMX">
+            <summary>EMX</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.G120">
+            <summary>G120</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.G400">
+            <summary>G400</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.CerbFamily">
+            <summary>Cerb family</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.FEZHydra">
+            <summary>FEZ Hydra</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.G80">
+            <summary>G80</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.G30">
+            <summary>G30</summary>
+        </member>
+        <member name="F:GHI.Processor.DeviceType.G120E">
+            <summary>G120E</summary>
+        </member>
+        <member name="T:GHI.Processor.InFieldUpdate">
+            <summary>
+            Provides in-field update (IFU) functionality. This functionality allows devices that are deployed in field to update their software
+            automatically. See https://www.ghielectronics.com/docs/147/ for more information.
+            </summary>
+        </member>
+        <member name="M:GHI.Processor.InFieldUpdate.Initialize(GHI.Processor.InFieldUpdate.Types)">
+            <summary>Initializes IFU.</summary>
+            <param name="type">The type of update to be performed.</param>
+        </member>
+        <member name="M:GHI.Processor.InFieldUpdate.Load(GHI.Processor.InFieldUpdate.Types,System.Byte[],System.Int32)">
+            <summary>Loads the files to be updated. This function can be called multiple times.</summary>
+            <param name="type">Type of update to be performed.</param>
+            <param name="data">Data used for the update.</param>
+            <param name="size">Size of the passed in data.</param>
+        </member>
+        <member name="M:GHI.Processor.InFieldUpdate.FlashAndReset">
+            <summary>Flashes the newly loaded files and resets the board.</summary>
+        </member>
+        <member name="M:GHI.Processor.InFieldUpdate.Abort">
+            <summary>Aborts the update process.</summary>
+        </member>
+        <member name="M:GHI.Processor.InFieldUpdate.CalculateCrc(GHI.Processor.InFieldUpdate.Types)">
+            <summary>Provides a CRC (CRC-16-CCITT) for firmware, deployment, or config region currently on the device with a seed of zero.</summary>
+            <param name="type">The region to calculate the CRC over.</param>
+            <returns>The calculated CRC.</returns>
+        </member>
+        <member name="T:GHI.Processor.InFieldUpdate.Types">
+            <summary>The update types.</summary>
+        </member>
+        <member name="F:GHI.Processor.InFieldUpdate.Types.Firmware">
+            <summary>Firmware update.</summary>
+        </member>
+        <member name="F:GHI.Processor.InFieldUpdate.Types.Application">
+            <summary>Application update.</summary>
+        </member>
+        <member name="F:GHI.Processor.InFieldUpdate.Types.Configuration">
+            <summary>Configuration update.</summary>
+        </member>
+        <member name="T:GHI.Processor.InFieldUpdate.InitializationException">
+            <summary>An exception thrown when IFU fails to initialize.</summary>
+        </member>
+        <member name="T:GHI.Processor.InFieldUpdate.LoadException">
+            <summary>An exception thrown when IFU fails to load data.</summary>
+        </member>
+        <member name="T:GHI.Processor.InFieldUpdate.FlashException">
+            <summary>An exception thrown when IFU fails to flash.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures">
+            <summary>
+            Provides access to Runtime Loadable Procedures (RLP). RLP allows developers to load and execute their own compiled C or Assembly functions at
+            runtime. RLP supports loading ELF executables and, for advanced users, loading binary images using the GHI.LowLevel.AddressSpace class. The
+            user can load multiple images in the reserved RLP memory region. Compiled functions are executed natively and can perform much faster than
+            managed application. This is very useful for calculation intensive applications. RLP also has extensions that can be used directly from native
+            code. You can use dynamic memory allocation, perform native tasks at a specific time, install interrupts, and more. See
+            https://www.ghielectronics.com/docs/50/ for more information.
+            </summary>
+        </member>
+        <member name="E:GHI.Processor.RuntimeLoadableProcedures.NativeEvent">
+            <summary>The managed event raised when an event is raised in native code. See RLP native extensions RLPext-&gt;PostManagedEvent.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.NativeEventEventHandler">
+            <summary>The delegate representing the RLP event handler.</summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.Memory">
+            <summary>Memory information for this specific device.</summary>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.Memory.BaseAddress">
+            <summary>The base address of the device's RLP memory region.</summary>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.Memory.Size">
+            <summary>The size of the device's RLP memory region.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.NativeEventEventArgs">
+            <summary>Events arguments for the NativeEvent event.</summary>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.NativeEventEventArgs.Data">
+            <summary>The data passed from the native side.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.ElfImage">
+            <summary>Represents an ELF image that is parsed and loaded into memory.</summary>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.#ctor(System.Byte[])">
+            <summary>Creates a new ELF image from the given data.</summary>
+            <param name="elfImageData">The buffer that represents the ELF image.</param>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.FindSymbolAddress(System.String,GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType)">
+            <summary>Looks up a symbol name and type in the symbol table.</summary>
+            <param name="name">The symbol name.</param>
+            <param name="type">The symbol type.</param>
+            <returns>The symbol's address in memory.</returns>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.InitializeBssRegion">
+            <summary>Initializes the region from "__bss_start__" to "__bss_end__" to zeros.</summary>
+            <remarks>
+            This method works only if the linker script file is similar to the one provided with the RLP examples and defines __bss_start__ and __bss_end__.
+            </remarks>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.InitializeBssRegion(System.String,System.String)">
+            <summary>Initializes a given region to zeros.</summary>
+            <param name="startAddressName">
+            The BSS region starting address name. It is "__bss_start__" in the example linker script provided with the RLP examples.
+            </param>
+            <param name="endAddressName">
+            The BSS region ending address name. It is "__bss_end__" in the example linker script provided with the RLP examples.
+            </param>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.ZeroRegion(System.UInt32,System.UInt32)">
+            <summary>Initializes a memory region with zeros.</summary>
+            <param name="startAddress">The region start address.</param>
+            <param name="regionSize">The region size.</param>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.ElfImage.FindFunction(System.String)">
+            <summary>Finds and returns a native function with the given name.</summary>
+            <param name="name">The function's name.</param>
+            <remarks>The function.</remarks>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.ElfImage.Address">
+            <summary>The image address of the ELF image.</summary>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.ElfImage.Size">
+            <summary>The image size of the ELF image.</summary>
+        </member>
+        <member name="P:GHI.Processor.RuntimeLoadableProcedures.ElfImage.RegionCount">
+            <summary>The number of regions in the ELF image.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType">
+            <summary>Represents the possible symbol types to find.</summary>
+        </member>
+        <member name="F:GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType.NoType">
+            <summary>No type. For example BSS start address symbol.</summary>
+        </member>
+        <member name="F:GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType.Object">
+            <summary>An object.</summary>
+        </member>
+        <member name="F:GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType.Function">
+            <summary>A function.</summary>
+        </member>
+        <member name="F:GHI.Processor.RuntimeLoadableProcedures.ElfImage.SymbolType.Section">
+            <summary>A section.</summary>
+        </member>
+        <member name="T:GHI.Processor.RuntimeLoadableProcedures.NativeFunction">
+            <summary>Represents a native function.</summary>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.NativeFunction.#ctor(System.UInt32)">
+            <summary>Creates a native function at the given address.</summary>
+            <param name="address">The function's address.</param>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.NativeFunction.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.NativeFunction.Dispose">
+            <summary>Disposes of the object.</summary>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.NativeFunction.Invoke(System.Object[])">
+            <summary>Calls a native function.</summary>
+            <param name="argumentList">The variable argument list to pass to the native function.</param>
+            <returns>The native return value.</returns>
+        </member>
+        <member name="M:GHI.Processor.RuntimeLoadableProcedures.NativeFunction.Dispose(System.Boolean)">
+            <summary>Disposes of the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="T:GHI.IO.Storage.IRemovable">
+            <summary>The base class for all removable media.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.IRemovable.Mount">
+            <summary>Unmounts the storage device.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.IRemovable.Unmount">
+            <summary>Mounts the storage device.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.IRemovable.ForceInitialization">
+            <summary>Forces initialization the device. Regular users do not need this function.</summary>
+        </member>
+        <member name="P:GHI.IO.Storage.IRemovable.Id">
+            <summary>The id for the storage device.</summary>
+        </member>
+        <member name="P:GHI.IO.Storage.IRemovable.Mounted">
+            <summary>Whether or not the device is mounted.</summary>
+        </member>
+        <member name="T:GHI.IO.Storage.SDCard">
+            <summary>Handles the available SD (Secure Digital) storage devices.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.#ctor">
+            <summary>Creates a new instance on the MCI interface.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.#ctor(GHI.IO.Storage.SDCard.SDInterface)">
+            <summary>Creates a new instance using the specified interface.</summary>
+            <param name="sdInterface">The interface to use.</param>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.ForceInitialization">
+            <summary>Forces initialization the device. Regular users do not need this function.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Dispose">
+            <summary>Disposes the object.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Mount">
+            <summary>
+            Mounts the file system for the storage device. Once the file system is prepared by NETMF and ready to use, the RemovableMedia.Insert event
+            will be fired.
+            </summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Mount(System.Int32)">
+            <summary>Mounts the file system for the storage device.</summary>
+            <param name="speed">The clock speed of the SD in kilohertz.</param>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Unmount">
+            <summary>Unmounts the file system for the storage device.</summary>
+        </member>
+        <member name="M:GHI.IO.Storage.SDCard.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.IO.Storage.SDCard.Id">
+            <summary>The id for the storage device.</summary>
+        </member>
+        <member name="P:GHI.IO.Storage.SDCard.Mounted">
+            <summary>Whether or not the device is mounted.</summary>
+        </member>
+        <member name="T:GHI.IO.Storage.SDCard.SDInterface">
+            <summary>The possible SD card interfaces.</summary>
+        </member>
+        <member name="F:GHI.IO.Storage.SDCard.SDInterface.MCI">
+            <summary>The default MCI interface.</summary>
+        </member>
+        <member name="F:GHI.IO.Storage.SDCard.SDInterface.SPI">
+            <summary>Access the SD card over SPI (device dependent).</summary>
+        </member>
+        <member name="T:GHI.Processor.RealTimeClock">
+            <summary>
+            Provides access to the internal Real Time Clock. With Real Time Clock, you can keep track of date and time even if the power is off. The time
+            is kept using an external battery. See https://www.ghielectronics.com/docs/29/ for more information.
+            </summary>
+            <remarks>The RTC time is not related to the NETMF time. You must set the time manually at powerup.</remarks>
+        </member>
+        <member name="M:GHI.Processor.RealTimeClock.SetDateTime(System.DateTime)">
+            <summary>Sets the current RTC date and time.</summary>
+            <param name="dateTime">The new date and time.</param>
+        </member>
+        <member name="M:GHI.Processor.RealTimeClock.GetDateTime">
+            <summary>Gets the current RTC date and time.</summary>
+            <returns>The current RTC date and time.</returns>
+        </member>
+        <member name="M:GHI.Processor.RealTimeClock.SetAlarm(System.DateTime)">
+            <summary>Sets the current RTC alarm.</summary>
+            <param name="alarm">The time of the alarm.</param>
+            <remarks>
+            This can be used to drive the ALARM pin high or wake the processor up from hibernation. The alarm pin is an RTC controlled 1.8V output pin
+            that goes low when the alarm time is specified and high when an RTC alarm occurs. The RTC can supply battery power to the ALARM pin and
+            that can be used by external hardware to restore module power and resume operation.
+            </remarks>
+        </member>
+        <member name="M:GHI.Processor.RealTimeClock.GetAlarm">
+            <summary>Gets the current RTC alarm.</summary>
+            <returns>The current RTC alarm.</returns>
+        </member>
+        <member name="T:GHI.Processor.Register">
+            <summary>Provide access to a single int/uint value in memory in memory. See https://www.ghielectronics.com/docs/108/ for more information.</summary>
+        </member>
+        <member name="M:GHI.Processor.Register.#ctor(System.UInt32)">
+            <summary>Constructs a new instance.</summary>
+            <param name="address">The memory address of the register.</param>
+        </member>
+        <member name="M:GHI.Processor.Register.#ctor(System.UInt32,System.Int32)">
+            <summary>Creates a new register.</summary>
+            <param name="address">The memory address of the register.</param>
+            <param name="value">The value to write to the register upon creation.</param>
+        </member>
+        <member name="M:GHI.Processor.Register.#ctor(System.UInt32,System.UInt32)">
+            <summary>Creates a new register.</summary>
+            <param name="address">The memory address of the register.</param>
+            <param name="value">The value to write to the register upon creation.</param>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Implicit(GHI.Processor.Register)~System.Boolean">
+            <summary>Converts the given register to a bool. True if the underlying value is zero, false otherwise.</summary>
+            <param name="register">The register to read.</param>
+            <returns>Its true value.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Implicit(GHI.Processor.Register)~System.Int32">
+            <summary>Returns the register value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The register value.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_LessThan(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_GreaterThan(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_LessThanOrEqual(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_GreaterThanOrEqual(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Equality(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Inequality(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Addition(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Subtraction(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Multiply(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Division(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Modulus(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_BitwiseAnd(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_BitwiseOr(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_ExclusiveOr(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_LeftShift(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_RightShift(GHI.Processor.Register,System.Int32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_LessThan(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_GreaterThan(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_LessThanOrEqual(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_GreaterThanOrEqual(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Equality(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Inequality(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The value to compare against.</param>
+            <returns>The truth value of the result.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Addition(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Subtraction(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Multiply(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Division(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Modulus(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_BitwiseAnd(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_BitwiseOr(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_ExclusiveOr(GHI.Processor.Register,System.UInt32)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <param name="value">The second operand.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Increment(GHI.Processor.Register)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_Decrement(GHI.Processor.Register)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_UnaryPlus(GHI.Processor.Register)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_UnaryNegation(GHI.Processor.Register)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.op_OnesComplement(GHI.Processor.Register)">
+            <summary>Performs the operation on the underlying value.</summary>
+            <param name="register">The register to read.</param>
+            <returns>The modified register.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.Equals(System.Object)">
+            <summary>Checks for equality.</summary>
+            <param name="obj">The object to compare against.</param>
+            <returns>Whether or not they are equal</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.GetHashCode">
+            <summary>Returns the hash code of the object.</summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.ToString">
+            <summary>Returns the register as a string.</summary>
+            <returns>The string value.</returns>
+        </member>
+        <member name="M:GHI.Processor.Register.SetBits(System.UInt32)">
+            <summary>Sets certain bits in the register using a mask.</summary>
+            <param name="mask">The mask to apply.</param>
+            <remarks>
+            Every set bit in the mask sets the corresponding bit in the register. Every unset bit in the value is not changed in the register.
+            </remarks>
+        </member>
+        <member name="M:GHI.Processor.Register.ClearBits(System.UInt32)">
+            <summary>Clears certain bits in the register using a mask.</summary>
+            <param name="mask">The mask to apply.</param>
+            <remarks>
+            Every set bit in the mask unsets the corresponding bit in the register. Every unset bit in the value is not changed in the register.
+            </remarks>
+        </member>
+        <member name="M:GHI.Processor.Register.ToggleBits(System.UInt32)">
+            <summary>Toggles certain bits in the register using a mask.</summary>
+            <param name="mask">The mask to apply.</param>
+            <remarks>
+            Every set bit in the mask toggles the corresponding bit in the register. Every unset bit in the value is not changed in the register.
+            </remarks>
+        </member>
+        <member name="P:GHI.Processor.Register.Address">
+            <summary>The address of the register.</summary>
+        </member>
+        <member name="P:GHI.Processor.Register.SignedValue">
+            <summary>The current value of the register.</summary>
+        </member>
+        <member name="P:GHI.Processor.Register.Value">
+            <summary>The current value of the register.</summary>
+        </member>
+        <member name="P:GHI.Processor.Register.Item(System.Int32)">
+            <summary>Gets or sets the bit at the given index.</summary>
+            <param name="i">The bit to get or set.</param>
+            <returns>The value of the bit.</returns>
+        </member>
+        <member name="T:GHI.IO.SignalCapture">
+            <summary>Captures a pin's digital waveform into a buffer. See https://www.ghielectronics.com/docs/106/ for more information.</summary>
+            <remarks>
+            All managed threads are blocked while capturing. When the pin's state changes, the time from the last change until the new change is recorded.
+            </remarks>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin,Microsoft.SPOT.Hardware.Port.ResistorMode)">
+            <summary>Constructs a new object using an InputPort on the given pin.</summary>
+            <param name="pin">The pin on which to create the port.</param>
+            <param name="resistorMode">The resistor mode for the pin.</param>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin,Microsoft.SPOT.Hardware.Port.ResistorMode,Microsoft.SPOT.Hardware.Port.InterruptMode)">
+            <summary>Constructs a new object using an InterruptPort on the given interrupt capable pin.</summary>
+            <param name="pin">The pin on which to create the port.</param>
+            <param name="resistorMode">The resistor mode for the port.</param>
+            <param name="interruptMode">The interrupt mode for the port.</param>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Dispose">
+            <summary>Disposes the object.</summary>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Read(System.Boolean@,System.UInt32[])">
+            <summary>Reads the pin's waveform and its initial state.</summary>
+            <param name="initialState">The initial state of the pin.</param>
+            <param name="buffer">The buffer to into which to read the pin transition times in microseconds.</param>
+            <returns>The number of pin transitions.</returns>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Read(System.Boolean,System.UInt32[])">
+            <summary>Reads the pin's waveform after waiting for an initial state.</summary>
+            <param name="waitForState">The pin state to wait for before starting the capture.</param>
+            <param name="buffer">The buffer to into which to read the pin transition times in microseconds.</param>
+            <returns>The number of pin transitions.</returns>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Read(System.Boolean@,System.UInt32[],System.Int32,System.Int32)">
+            <summary>Reads the pin's waveform and its initial state.</summary>
+            <param name="initialState">The initial state of the pin.</param>
+            <param name="buffer">The buffer to into which to read the pin transition times in microseconds.</param>
+            <param name="offset">To offset into the buffer at which to begin reading.</param>
+            <param name="count">The number of transitions to read.</param>
+            <returns>The number of pin transitions.</returns>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Read(System.Boolean,System.UInt32[],System.Int32,System.Int32)">
+            <summary>Reads the pin's waveform after waiting for an initial state.</summary>
+            <param name="waitForState">The pin state to wait for before starting the capture.</param>
+            <param name="buffer">The buffer to into which to read the pin transition times in microseconds.</param>
+            <param name="offset">To offset into the buffer at which to begin reading.</param>
+            <param name="count">The number of transitions to read.</param>
+            <returns>The number of pin transitions.</returns>
+        </member>
+        <member name="M:GHI.IO.SignalCapture.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.IO.SignalCapture.InternalPort">
+            <summary>The underlying port object.</summary>
+        </member>
+        <member name="P:GHI.IO.SignalCapture.ReadTimeout">
+            <summary>How long to let the read operations wait until returning with incomplete data.</summary>
+        </member>
+        <member name="T:GHI.IO.SignalGenerator">
+            <summary>Allows a high frequency signal to be generated on a given digital pin. See https://www.ghielectronics.com/docs/24/ for more information.</summary>
+            <remarks>Software generation is used so accuracy may suffer and is platform dependent.</remarks>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin,System.Boolean)">
+            <summary>Constructs a new object.</summary>
+            <param name="pin">The pin on which signals will be generated.</param>
+            <param name="initialValue">The initial value of the pin.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Dispose">
+            <summary>Disposes the pin and marks it as available again.</summary>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Set(System.Boolean)">
+            <summary>Sets the current pin state.</summary>
+            <param name="pinState">Pin state.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Set(System.Boolean,System.UInt32[])">
+            <summary>Begins to generate a signal on the pin using the given timings buffer.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Set(System.Boolean,System.UInt32[],System.Boolean)">
+            <summary>Begins to generate a signal on the pin using the given timings buffer.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="repeat">Whether or not to repeat the buffer continually.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Set(System.Boolean,System.UInt32[],System.Int32,System.Int32)">
+            <summary>Begins to generate a signal on the pin using the given timings buffer.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="bufferOffset">The offset into the buffer at which to begin.</param>
+            <param name="bufferCount">The number of transitions in the buffer to make.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Set(System.Boolean,System.UInt32[],System.Int32,System.Int32,System.Boolean)">
+            <summary>Begins to generate a signal on the pin using the given timings buffer.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="bufferOffset">The offset into the buffer at which to begin.</param>
+            <param name="bufferCount">The number of transitions in the buffer to make.</param>
+            <param name="repeat">Whether or not to repeat the buffer continually.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.SetBlocking(System.Boolean,System.UInt32[])">
+            <summary>
+            Generates a signal on the pin using the given timings buffer and blocks until all timings have been processed with interrupts disabled.
+            </summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.SetBlocking(System.Boolean,System.UInt32[],System.Int32,System.Int32)">
+            <summary>
+            Generates a signal on the pin using the given timings buffer and blocks until all timings have been processed with interrupts disabled.
+            </summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="bufferOffset">The offset into the buffer at which to begin.</param>
+            <param name="bufferCount">The number of transitions in the buffer to make.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.SetBlocking(System.Boolean,System.UInt32[],System.Boolean,System.Int32,System.Int32)">
+            <summary>Generates a signal on the pin using the given timings buffer and blocks until all timings have been processed.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="disableInterrupts">Whether or not to disable interrupts while processing the timings.</param>
+            <param name="lastBitHoldTime">How long to hold the pin in its last state before returning.</param>
+            <param name="carrierFrequency">The carrier frequency of the signal in hertz. This is generated using software and may not be fully accurate.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.SetBlocking(System.Boolean,System.UInt32[],System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>Generates a signal on the pin using the given timings buffer and blocks until all timings have been processed.</summary>
+            <param name="initialValue">The initial value of the pin.</param>
+            <param name="timingsBuffer">The timings buffer. Each entry determines how long in microseconds the pin is held in the state before transitioning.</param>
+            <param name="bufferOffset">The offset into the buffer at which to begin.</param>
+            <param name="bufferCount">The number of transitions in the buffer to make.</param>
+            <param name="disableInterrupts">Whether or not to disable interrupts while processing the timings.</param>
+            <param name="lastBitHoldTime">How long to hold the pin in its last state before returning.</param>
+            <param name="carrierFrequency">The carrier frequency of the signal in hertz. This is generated using software and may not be fully accurate.</param>
+        </member>
+        <member name="M:GHI.IO.SignalGenerator.Dispose(System.Boolean)">
+            <summary>Disposes the pin and marks it as available again.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.IO.SignalGenerator.Active">
+            <summary>Whether or not the pin is currently being toggled.</summary>
+        </member>
+        <member name="P:GHI.IO.SignalGenerator.Pin">
+            <summary>The pin the signal generator is using.</summary>
+        </member>
+        <member name="T:GHI.IO.SoftwareI2CBus">
+            <summary>Provides I2C master functionality implemented in software using any two digital pins.</summary>
+            <remarks>
+            Only one master is allowed on the same bus. You must provide one pin for clock and one for data. You must connect external pull-up resistors
+            on those pins as required for I2C operation.
+            </remarks>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin,Microsoft.SPOT.Hardware.Cpu.Pin)">
+            <summary>Creates an I2C bus using the given clock and data pins.</summary>
+            <param name="clockPin">The clock pin.</param>
+            <param name="dataPin">The data pin.</param>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.Dispose">
+            <summary>Disposes the bus.</summary>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.CreateI2CDevice(System.Byte)">
+            <summary>Creates an new I2C device on the bus.</summary>
+            <param name="address">The address of the device. This must be the 7 bit address.</param>
+            <returns>The new I2C device.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.WriteRead(System.Byte,System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>Writes and reads the given data to the given pins.</summary>
+            <param name="address">The address of the slave device.</param>
+            <param name="writeBuffer">The buffer to send.</param>
+            <param name="writeOffset">To offset into the buffer at which to begin sending.</param>
+            <param name="writeLength">The number of bytes to send.</param>
+            <param name="readBuffer">The buffer to into which to read.</param>
+            <param name="readOffset">To offset into the buffer at which to begin reading.</param>
+            <param name="readLength">The number of bytes to read.</param>
+            <param name="numWritten">The number of bytes written successfully.</param>
+            <param name="numRead">The number of bytes read successfully.</param>
+            <returns>Whether or not all the bytes were written and read successfully.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.Dispose(System.Boolean)">
+            <summary>Disposes the bus.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.IO.SoftwareI2CBus.ClockPin">
+            <summary>The I2C bus clock pin.</summary>
+        </member>
+        <member name="P:GHI.IO.SoftwareI2CBus.DataPin">
+            <summary>The I2C bus data pin.</summary>
+        </member>
+        <member name="T:GHI.IO.SoftwareI2CBus.I2CDevice">
+            <summary>Represents an I2C device on a bus.</summary>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.WriteByte(System.Byte)">
+            <summary>Writes the given byte out to the device.</summary>
+            <param name="value">The byte to send.</param>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.ReadByte">
+            <summary>Reads a byte from the device.</summary>
+            <returns>The read byte.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.Write(System.Byte[])">
+            <summary>Writes the given buffer out to the device.</summary>
+            <param name="buffer">The buffer to send.</param>
+            <returns>The number of bytes successfully sent.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.Read(System.Byte[])">
+            <summary>Reads data into the given buffer from the device.</summary>
+            <param name="buffer">The buffer to into which to read.</param>
+            <returns>The number of bytes successfully read.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>Writes the given buffer out to the device.</summary>
+            <param name="buffer">The buffer to send.</param>
+            <param name="offset">To offset into the buffer at which to begin sending.</param>
+            <param name="count">The number of bytes to send.</param>
+            <returns>The number of bytes successfully sent.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>Reads data into the given buffer from the device.</summary>
+            <param name="buffer">The buffer to into which to read.</param>
+            <param name="offset">To offset into the buffer at which to begin reading.</param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>The number of bytes successfully read.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.WriteRead(System.Byte[],System.Byte[],System.Int32@,System.Int32@)">
+            <summary>Writes and reads the given data to the device.</summary>
+            <param name="writeBuffer">The buffer to send.</param>
+            <param name="readBuffer">The buffer to into which to read.</param>
+            <param name="numWritten">The number of bytes written successfully.</param>
+            <param name="numRead">The number of bytes read successfully.</param>
+            <returns>Whether or not all the bytes were written and read successfully.</returns>
+        </member>
+        <member name="M:GHI.IO.SoftwareI2CBus.I2CDevice.WriteRead(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>Writes and reads the given data to the device.</summary>
+            <param name="writeBuffer">The buffer to send.</param>
+            <param name="writeOffset">To offset into the buffer at which to begin sending.</param>
+            <param name="writeLength">The number of bytes to send.</param>
+            <param name="readBuffer">The buffer to into which to read.</param>
+            <param name="readOffset">To offset into the buffer at which to begin reading.</param>
+            <param name="readLength">The number of bytes to read.</param>
+            <param name="numWritten">The number of bytes written successfully.</param>
+            <param name="numRead">The number of bytes read successfully.</param>
+            <returns>Whether or not all the bytes were written and read successfully.</returns>
+        </member>
+        <member name="P:GHI.IO.SoftwareI2CBus.I2CDevice.Address">
+            <summary>The I2C slave device address.</summary>
+        </member>
+        <member name="T:GHI.IO.SoftwareI2CBus.I2CDevice.IOException">
+            <summary>An exception for when an error occurs when writing or reading from the device.</summary>
+        </member>
+        <member name="T:GHI.Utilities.Arrays">
+            <summary>Helper methods for arrays.</summary>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Contains(System.Byte[],System.Byte[])">
+            <summary>Searches the given array for the given sub-array and returns the index it starts at or -1 for no result.</summary>
+            <param name="searchArray">The array to search in.</param>
+            <param name="toFind">The array to find.</param>
+            <returns>The index in the search array where the sub-array starts.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Contains(System.Byte[],System.Int32,System.Byte[])">
+            <summary>Searches the given array for the given sub-array and returns the index it starts at or -1 for no result.</summary>
+            <param name="searchArray">The array to search in.</param>
+            <param name="searchOffset">The offset to begin searching at.</param>
+            <param name="toFind">The array to find.</param>
+            <returns>The index in the search array where the sub-array starts.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Contains(System.Byte[],System.Int32,System.Byte[],System.Int32)">
+            <summary>Searches the given array for the given sub-array and returns the index it starts at or -1 for no result.</summary>
+            <param name="searchArray">The array to search in.</param>
+            <param name="searchOffset">The offset to begin searching at.</param>
+            <param name="toFind">The array to find.</param>
+            <param name="findOffset">The offset to begin comparing at.</param>
+            <returns>The index in the search array where the sub-array starts.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Contains(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>Searches the given array for the given sub-array and returns the index it starts at or -1 for no result.</summary>
+            <param name="searchArray">The array to search in.</param>
+            <param name="searchOffset">The offset to begin searching at.</param>
+            <param name="toFind">The array to find.</param>
+            <param name="findOffset">The offset to begin comparing at.</param>
+            <param name="findLength">How many bytes to find.</param>
+            <returns>The index in the search array where the sub-array starts.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Compare(System.Byte[],System.Byte[])">
+            <summary>Compares the members of two arrays.</summary>
+            <param name="array1">The first array to be compared.</param>
+            <param name="array2">The second array to be compared.</param>
+            <returns>Whether or not the two arrays are equal.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Compare(System.Byte[],System.Byte[],System.Int32@)">
+            <summary>Compares the members of two arrays.</summary>
+            <param name="array1">The first array to be compared.</param>
+            <param name="array2">The second array to be compared.</param>
+            <param name="differentAt">The index at which the arrays are different, -1 if equal.</param>
+            <returns>Whether or not the two arrays are equal.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Compare(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>Compares the members in the given range of two arrays.</summary>
+            <param name="array1">The first array to be compared.</param>
+            <param name="array1Offset">The offset into the first array at which to begin comparing.</param>
+            <param name="array1Count">The number of elements in the first array to be compared.</param>
+            <param name="array2">The second array to be compared.</param>
+            <param name="array2Offset">The offset into the second array at which to begin comparing.</param>
+            <param name="array2Count">The number of elements in the second array to be compared.</param>
+            <returns>Whether or not the two arrays in the given range are equal.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.Compare(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32,System.Int32,System.Int32@)">
+            <summary>Compares the members in the given range of two arrays.</summary>
+            <param name="array1">The first array to be compared.</param>
+            <param name="array1Offset">The offset into the first array at which to begin comparing.</param>
+            <param name="array1Count">The number of elements in the first array to be compared.</param>
+            <param name="array2">The second array to be compared.</param>
+            <param name="array2Offset">The offset into the second array at which to begin comparing.</param>
+            <param name="array2Count">The number of elements in the second array to be compared.</param>
+            <param name="differentAt">The index at which the arrays are different, -1 if equal.</param>
+            <returns>Whether or not the two arrays in the given range are equal.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.InsertString(System.Byte[],System.Int32,System.String)">
+            <summary>Converts a string to UTF-8 and inserts into a byte array at the given offset.</summary>
+            <param name="buffer">The buffer into which the string will be written.</param>
+            <param name="offset">The offset in the buffer at which to write.</param>
+            <param name="value">The string to write.</param>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.InsertString(System.Byte[],System.Int32,System.String,System.Boolean)">
+            <summary>Converts a string to UTF-8 and inserts into a byte array at the given offset.</summary>
+            <param name="buffer">The buffer into which the string will be written.</param>
+            <param name="offset">The offset in the buffer at which to write.</param>
+            <param name="value">The string to write.</param>
+            <param name="nullTerminate">
+            Pass true to terminate the string with a null and false to not. If this is used, the buffer must have extra byte to store the null.
+            </param>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.InsertFloat(System.Byte[],System.Int32,System.Single)">
+            <summary>Converts a value into a little-endian binary representation and inserts it into an array.</summary>
+            <param name="buffer">The buffer into which the value will be written.</param>
+            <param name="offset">The offset in the buffer at which to write.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.InsertInt32(System.Byte[],System.Int32,System.Int32)">
+            <summary>Converts a value into a little-endian binary representation and inserts it into an array.</summary>
+            <param name="buffer">The buffer into which the value will be written.</param>
+            <param name="offset">The offset in the buffer at which to write.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.ExtractFloat(System.Byte[],System.Int32)">
+            <summary>Converts and extracts a little-endian float from the buffer at the given offset.</summary>
+            <param name="buffer">The buffer from which the value will be read.</param>
+            <param name="offset">The offset in the buffer from which to read.</param>
+            <returns>The value extracted from the buffer.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.ExtractInt32(System.Byte[],System.Int32)">
+            <summary>Converts and extracts a little-endian int from the buffer at the given offset.</summary>
+            <param name="buffer">The buffer from which the value will be read.</param>
+            <param name="offset">The offset in the buffer from which to read.</param>
+            <returns>The value extracted from the buffer.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Arrays.SplitToArray(System.Byte[],System.Int32,System.Char,System.Single[])">
+            <summary>
+            Splits a byte buffer representing a string at each instance of a delimiter and saves the resulting values into the given array.
+            </summary>
+            <param name="buffer">The buffer to be split.</param>
+            <param name="length">The length of the buffer.</param>
+            <param name="delimeter">The delimiter character that will be used to split the buffer.</param>
+            <param name="values">An array of values to be filled out from the parsed and split buffer.</param>
+            <returns>The number of values that were extracted.</returns>
+        </member>
+        <member name="T:GHI.Processor.Watchdog">
+            <summary>
+            Provides Watchdog functionality. Watchdog is used to reset the system if it enters an improper state. If the Watchdog timer is not reset by
+            the user within the specified timeout period, the system will reset. See https://www.ghielectronics.com/docs/31/ for more information.
+            </summary>
+            <remarks>On some systems, once the Watchdog is enabled, it cannot be disabled.</remarks>
+        </member>
+        <member name="M:GHI.Processor.Watchdog.ResetCounter">
+            <summary>Resets the watchdog counter;</summary>
+        </member>
+        <member name="M:GHI.Processor.Watchdog.Enable(System.Int32)">
+            <summary>Enables the watchdog with the given timeout.</summary>
+            <param name="timeout">The timeout in milliseconds.</param>
+        </member>
+        <member name="M:GHI.Processor.Watchdog.Disable">
+            <summary>Disables the watchdog.</summary>
+        </member>
+        <member name="P:GHI.Processor.Watchdog.LastResetCause">
+            <summary>The cause of the last device reset.</summary>
+        </member>
+        <member name="P:GHI.Processor.Watchdog.MaxTimeoutPeriod">
+            <summary>The maximum supported timeout in milliseconds.</summary>
+            <remarks>This value is platform dependant.</remarks>
+        </member>
+        <member name="P:GHI.Processor.Watchdog.TimeoutPeriod">
+            <summary>The period of the timeout in milliseconds..</summary>
+        </member>
+        <member name="P:GHI.Processor.Watchdog.Enabled">
+            <summary>Whether or not watchdog is enabled.</summary>
+        </member>
+        <member name="T:GHI.Processor.Watchdog.ResetCause">
+            <summary>The causes of system reset.</summary>
+        </member>
+        <member name="F:GHI.Processor.Watchdog.ResetCause.Normal">
+            <summary>The system was not reset due to watchdog.</summary>
+        </member>
+        <member name="F:GHI.Processor.Watchdog.ResetCause.Watchdog">
+            <summary>The system was reset due to watchdog.</summary>
+        </member>
+        <member name="T:GHI.Utilities.Xtea">
+            <summary>
+            Encryption and decryption using the Extended Tiny Encryption Algorithm (XTEA). See https://www.ghielectronics.com/docs/49/ for more information.
+            </summary>
+            <remarks>
+            This class does 32 cycles of XTEA. The data length to be encrypted or decrypted MUST be a multiple of 8. To work around this restriction, pad
+            the data until it is a multiple of 8.
+            </remarks>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.#ctor">
+            <summary>Creates a new XTEA instance using a randomly generated key.</summary>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.#ctor(System.Byte[])">
+            <summary>Creates a new XTEA instance.</summary>
+            <param name="key">The encryption key.</param>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.GenerateKey">
+            <summary>Generates a new random key using Random.NextBytes.</summary>
+            <returns>The new key.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.GenerateKey(System.Int32)">
+            <summary>Generates a new random key using Random.NextBytes.</summary>
+            <param name="seed">The key with which to seed Random.</param>
+            <returns>The new key.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Encrypt(System.Byte[])">
+            <summary>Encrypts the given buffer.</summary>
+            <param name="inputData">The buffer to encrypt.</param>
+            <returns>The encrypted data.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Decrypt(System.Byte[])">
+            <summary>Decrypts the given buffer.</summary>
+            <param name="inputData">The buffer to decrypt.</param>
+            <returns>The decrypted data.</returns>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Encrypt(System.Byte[],System.Byte[])">
+            <summary>Encrypts the given buffer.</summary>
+            <param name="inputData">The buffer to encrypt.</param>
+            <param name="outputData">The encrypted data.</param>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Decrypt(System.Byte[],System.Byte[])">
+            <summary>Decrypts the given buffer.</summary>
+            <param name="inputData">The buffer to decrypt.</param>
+            <param name="outputData">The decrypted data.</param>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Encrypt(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>Encrypts the given buffer.</summary>
+            <param name="inputData">The buffer to encrypt.</param>
+            <param name="inputOffset">The offset into the input buffer to encrypt.</param>
+            <param name="inputCount">The length of data to encrypt. It must be a multiple of 8.</param>
+            <param name="outputData">The encrypted data.</param>
+            <param name="outputOffset">The offset into the output array to copy the encrypted data.</param>
+        </member>
+        <member name="M:GHI.Utilities.Xtea.Decrypt(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>Decrypts the given buffer.</summary>
+            <param name="inputData">The buffer to decrypt.</param>
+            <param name="inputOffset">The offset into the input buffer to decrypt.</param>
+            <param name="inputCount">The length of data to decrypt. It must be a multiple of 8.</param>
+            <param name="outputData">The decrypted data.</param>
+            <param name="outputOffset">The offset into the output array to copy the decrypted data.</param>
+        </member>
+        <member name="P:GHI.Utilities.Xtea.KeyLength">
+            <summary>The required length of the key.</summary>
+        </member>
+        <member name="P:GHI.Utilities.Xtea.Key">
+            <summary>The key used for encryption and decryption.</summary>
+        </member>
+    </members>
+</doc>

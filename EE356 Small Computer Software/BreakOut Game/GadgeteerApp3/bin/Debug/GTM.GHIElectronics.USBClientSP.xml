@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GTM.GHIElectronics.USBClientSP</name>
+    </assembly>
+    <members>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBClientSP">
+            <summary>A USBClientSP module for Microsoft .NET Gadgeteer</summary>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.USBClientSP.#ctor(System.Int32)">
+            <summary>Constructs a new instance.</summary>
+            <param name="socketNumber">The mainboard socket that has the module plugged into it.</param>
+        </member>
+    </members>
+</doc>

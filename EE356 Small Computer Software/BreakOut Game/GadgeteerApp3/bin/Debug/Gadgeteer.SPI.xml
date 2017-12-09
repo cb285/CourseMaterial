@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gadgeteer.SPI</name>
+    </assembly>
+    <members>
+        <member name="T:Gadgeteer.SocketInterfaces.SpiFactory">
+            <summary>
+            Provides access to the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interfaces on sockets.
+            </summary>
+        </member>
+        <member name="M:Gadgeteer.SocketInterfaces.SpiFactory.Create(Gadgeteer.Socket,Gadgeteer.SocketInterfaces.SpiConfiguration,Gadgeteer.SocketInterfaces.SpiSharing,Gadgeteer.Socket,Gadgeteer.Socket.Pin,Gadgeteer.Modules.Module)">
+            <summary>
+            Creates an instance of <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> for the given socket.
+            </summary>
+            <param name="socket">The <see cref="T:Gadgeteer.Socket"/> for the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <param name="spiConfiguration">The <see cref="T:Gadgeteer.SocketInterfaces.SpiConfiguration"/> object for the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <param name="sharingMode">The <see cref="T:Gadgeteer.SocketInterfaces.SpiSharing"/> mode of the <see cref="T:Microsoft.SPOT.Hardware.SPI"/> interface.</param>
+            <param name="chipSelectSocket">The chip select <see cref="T:Gadgeteer.Socket"/> of the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface. Can be null if not used.</param>
+            <param name="chipSelectSocketPin">The chip select pin on <paramref name="chipSelectSocket"/>.</param>
+            <param name="module">The <see cref="T:Gadgeteer.Modules.Module"/> that is connected to the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gadgeteer.SocketInterfaces.SpiFactory.Create(Gadgeteer.Socket,Gadgeteer.SocketInterfaces.SpiConfiguration,Gadgeteer.SocketInterfaces.SpiSharing,Gadgeteer.Socket,Gadgeteer.Socket.Pin,Gadgeteer.Socket,Gadgeteer.Socket.Pin,Gadgeteer.Modules.Module)">
+            <summary>
+            Creates an instance of <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> for the given socket.
+            </summary>
+            <param name="socket">The <see cref="T:Gadgeteer.Socket"/> for the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <param name="spiConfiguration">The <see cref="T:Gadgeteer.SocketInterfaces.SpiConfiguration"/> object for the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <param name="sharingMode">The <see cref="T:Gadgeteer.SocketInterfaces.SpiSharing"/> mode of the <see cref="T:Microsoft.SPOT.Hardware.SPI"/> interface.</param>
+            <param name="chipSelectSocket">The chip select <see cref="T:Gadgeteer.Socket"/> of the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface. Can be null if not used.</param>
+            <param name="chipSelectSocketPin">The chip select pin on <paramref name="chipSelectSocket"/>.</param>
+            <param name="busySocket">The busy <see cref="T:Gadgeteer.Socket"/> of the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface. Can be null if not used.</param>
+            <param name="busySocketPin">The busy pin to on the <paramref name="busySocket"/>.</param>
+            <param name="module">The <see cref="T:Gadgeteer.Modules.Module"/> that is connected to the <see cref="T:Gadgeteer.SocketInterfaces.Spi"/> interface.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

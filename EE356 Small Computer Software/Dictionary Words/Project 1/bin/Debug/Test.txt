@@ -1,0 +1,9 @@
+word
+ordw
+clayton
+brutus
+cat
+hat
+hot
+dot
+dog

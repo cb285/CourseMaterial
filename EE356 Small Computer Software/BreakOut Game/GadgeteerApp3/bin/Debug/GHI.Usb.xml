@@ -1,0 +1,2096 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GHI.Usb</name>
+    </assembly>
+    <members>
+        <member name="T:GHI.Usb.Client.Cdc">
+            <summary>This device emulates a CDC virtual COM port.</summary>
+            <remarks>
+            Your host operating system may need the driver located <a href="https://www.ghielectronics.com/downloads/src/CDC_Driver.zip">here</a>. If you
+            build a custom or composite device, you must change the driver to reflect the VID, PID, and interface number that you are using. Search for
+            the string USB\Vid_VVVV&amp;Pid_PPPP&amp;MI_II in the INF file and update VVVV to your VID, PPPP to your PID, and II to you interface index.
+            </remarks>
+        </member>
+        <member name="T:GHI.Usb.Client.RawDevice">
+            <summary>Represent a USB device.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String)">
+            <summary>Creates a new raw device.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maximumPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.ReserveNewEndpoint">
+            <summary>Gets the next available endpoint.</summary>
+            <returns>The endpoint number.</returns>
+            <remarks>The number of available endpoints depends on your platform.</remarks>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.ReserveNewEndpoint(System.Int32)">
+            <summary>Reserves the given endpoint.</summary>
+            <param name="endpoint">The specific endpoint number to reserve.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.AddDescriptor(Microsoft.SPOT.Hardware.UsbClient.Configuration.Descriptor)">
+            <summary>Adds a descriptor to the device.</summary>
+            <param name="descriptor">The descriptor to add.</param>
+            <remarks>This is for descriptors that are not part of the configuration descriptors that need a special request.</remarks>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.AddInterface(Microsoft.SPOT.Hardware.UsbClient.Configuration.UsbInterface,System.String)">
+            <summary>Adds an interface to the device.</summary>
+            <param name="usbInterface">The interface.</param>
+            <param name="interfaceString">The interface name.</param>
+            <returns>The assigned interface index.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.Activate">
+            <summary>Sets this device as the active device on the USB client controller. The existing active device will be deactivated if present.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.Deactivate">
+            <summary>Deactivates this device and stops the USB client controller.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.CreateStream(System.Int32,System.Int32)">
+            <summary>Creates a steam for reading and writing to the device.</summary>
+            <param name="writeEndpoint">The write endpoint. Use RawStream.NullEndpoint if not available.</param>
+            <param name="readEndpoint">The read endpoint. Use RawStream.NullEndpoint if not available.</param>
+            <returns>The new stream.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.CreateStream(System.Int32,GHI.Usb.Client.RawDevice)">
+            <summary>Creates a new instance of the stream type for this device type.</summary>
+            <param name="index">The index of the stream</param>
+            <param name="parent">The owning raw device.</param>
+            <returns>The new stream.</returns>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.MaxEndpoint">
+            <summary>The maximum number of endpoints.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.MaxStreams">
+            <summary>The maximum number of streams.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.VendorId">
+            <summary>The vendor id of the device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.ProductId">
+            <summary>The product id of the device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.Version">
+            <summary>The version of the device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.MaximumPower">
+            <summary>The maximum power the device might need.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.Manufacturer">
+            <summary>The manufacturer of the device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.Product">
+            <summary>The product name.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.SerialNumber">
+            <summary>The serial number of the device.</summary>
+        </member>
+        <member name="T:GHI.Usb.Client.RawDevice.RawStream">
+            <summary>USB stream for reading and writing data through two endpoints.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>Not supported.</summary>
+            <param name="offset">Not supported.</param>
+            <param name="origin">Not supported.</param>
+            <returns>Not supported.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.SetLength(System.Int64)">
+            <summary>Not supported.</summary>
+            <param name="value">Not supported.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Flush">
+            <summary>Flushs the USB write buffers.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>Reads data from the stream.</summary>
+            <param name="buffer">The buffer to read into.</param>
+            <param name="offset">The offset into the buffer at which to write the data.</param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>The number of bytes read.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>Writes data to the stream.</summary>
+            <param name="buffer">The buffer from which to write.</param>
+            <param name="offset">The offset into the buffer at which to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Read(System.Byte[])">
+            <summary>Reads data from the stream.</summary>
+            <param name="buffer">The buffer into which to read.</param>
+            <returns>The number of bytes read.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Write(System.Byte[])">
+            <summary>Writes data to the stream.</summary>
+            <param name="buffer">The buffer from which to write.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.RawDevice.RawStream.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.NullEndpoint">
+            <summary>Represents no endpoint.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.StreamIndex">
+            <summary>The index of this stream.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.ReadTimeout">
+            <summary>How long to wait before timing out a read operation.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.WriteTimeout">
+            <summary>How long to wait before timing out a write operation.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.CanRead">
+            <summary>Whether or not read is allowed from the stream.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.CanSeek">
+            <summary>Whether or not seeking is allowed in the stream.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.CanWrite">
+            <summary>Whether or not writting is allowed to the stream.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.Length">
+            <summary>Not supported.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.Position">
+            <summary>Not supported.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.LastWritten">
+            <summary>The number of bytes successfully written in the last call to any Write function.</summary>
+            <remarks>
+            Since System.IO.Stream.Write returns void, we cannot return this information from our overload. We also are not updating Position or
+            Length because they are not well defined for a stream like this and they would require tracking the difference yourself.
+            </remarks>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.BytesToRead">
+            <summary>The number of bytes available to read.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.RawDevice.RawStream.BytesToWrite">
+            <summary>The number of bytes that are in the process of being written.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Cdc.#ctor">
+            <summary>Creates a new CDC interface with default parameters.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Cdc.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String,System.String)">
+            <summary>Creates a new CDC interface.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maxPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+            <param name="interfaceName">The name of the interface.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Cdc.CreateStream(System.Int32,GHI.Usb.Client.RawDevice)">
+            <summary>Creates a new instance of a CDC stream.</summary>
+            <param name="index">The index of the stream</param>
+            <param name="parent">The owning raw device.</param>
+            <returns>The new stream.</returns>
+        </member>
+        <member name="P:GHI.Usb.Client.Cdc.Stream">
+            <summary>The stream for the CDC connection.</summary>
+        </member>
+        <member name="T:GHI.Usb.Client.Cdc.CdcStream">
+            <summary>Stream for reading and writing data over a CDC connection.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Cdc.CdcStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>Writes data to the stream.</summary>
+            <param name="buffer">The buffer from which to write.</param>
+            <param name="offset">The offset into the buffer at which to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+        </member>
+        <member name="T:GHI.Usb.Client.Controller">
+            <summary>
+            This class allows the device to act as a USB client and interact with USB host devices. This class is used to start and stop client devices
+            created through RawDevice or one of the built in
+            devices: mass storage, mice, keyboards, joysticks, and CDC. Only one device can be active at a time. See
+                     https://www.ghielectronics.com/docs/20/ for more information.
+            </summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Controller.State">
+            <summary>The current USB client connection status.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Controller.ActiveDevice">
+            <summary>The current active USB client device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Controller.MaxPacketSize">
+            <summary>The maximum packet size.</summary>
+        </member>
+        <member name="T:GHI.Usb.Client.Joystick">
+            <summary>
+            This device emulates a joystick. You can set the x, y, and z axis values, the z axis rotation, the state of 32 buttons, and 8 hat swtich directions.
+            </summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.#ctor">
+            <summary>Creates a new joystick with default parameters.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String,System.String)">
+            <summary>Creates a new joystick.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maxPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+            <param name="interfaceName">The name of the interface.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.SendRawData(System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,GHI.Usb.HatSwitchDirection)">
+            <summary>Sends the given raw data directly to the host..</summary>
+            <param name="x">The new x position from -32,768 to 32,767.</param>
+            <param name="y">The new y position from -32,768 to 32,767.</param>
+            <param name="z">The new z position from -32,768 to 32,767.</param>
+            <param name="zRotation">The new z rotation from -32,768 to 32,767.</param>
+            <param name="buttons">
+            Sends the given uint as a bitfield where each 1 represents a button press for the button whose number is the bit number.
+            </param>
+            <param name="hatSwitch">The new direction of the hat switch.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.IsButtonPressed(System.Int32)">
+            <summary>Whether or not the given button has been pressed.</summary>
+            <param name="index">The button to query.</param>
+            <returns>The button state.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.PressButton(System.Int32)">
+            <summary>Presses the given button.</summary>
+            <param name="index">The button to press.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.ReleaseButton(System.Int32)">
+            <summary>Releases the given button.</summary>
+            <param name="index">The button to release.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.ClickButton(System.Int32)">
+            <summary>Presses then releases the given button.</summary>
+            <param name="index">The button to click.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Joystick.ClickButton(System.Int32,System.Int32)">
+            <summary>Presses then releases the given button with the given delay between the actions.</summary>
+            <param name="index">The button to click.</param>
+            <param name="delay">The delay between the actions.</param>
+        </member>
+        <member name="P:GHI.Usb.Client.Joystick.X">
+            <summary>Sets the x axis position. It must be between –32,768 to +32,767.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Joystick.Y">
+            <summary>Sets the y axis position. It must be between –32,768 to +32,767.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Joystick.Z">
+            <summary>Sets the z axis position. It must be between –32,768 to +32,767.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Joystick.ZRotation">
+            <summary>Sets the z rotation. It must be between –32,768 to +32,767.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Joystick.HatSwitch">
+            <summary>Sets the hat switch direction.</summary>
+        </member>
+        <member name="T:GHI.Usb.Client.Keyboard">
+            <summary>This device emulates a keyboard. You can set the state of any key, but only seven keys can be pressed at once.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.#ctor">
+            <summary>Creates a new keyboard with default parameters.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String,System.String)">
+            <summary>Creates a new keyboard.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maxPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+            <param name="interfaceName">The name of the interface.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.Stroke(GHI.Usb.Key)">
+            <summary>Presses and then releases the key.</summary>
+            <param name="key">The key to press and release.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.Stroke(GHI.Usb.Key,System.Int32)">
+            <summary>Presses and then releases the key.</summary>
+            <param name="key">The key to press and release.</param>
+            <param name="delay">How long to wait after the press before releasing.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.Release(GHI.Usb.Key)">
+            <summary>Releases the given key.</summary>
+            <param name="key">The key to release.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Keyboard.Press(GHI.Usb.Key)">
+            <summary>Presses the given key.</summary>
+            <param name="key">The key to press.</param>
+        </member>
+        <member name="T:GHI.Usb.Client.MassStorage">
+            <summary>
+            This device emulates a mass storage. Your Micro Framework device will appear as a virtual mass storage device similar to a USB Drive. This
+            works by exposing the storage connected to this device, such as SD card or USB sticks, to the host.
+            </summary>
+            <remarks>
+            Only one mass storage interface can be used, but multiple logical units are supported. Each logical unit will appear as a separate device on
+            your host PC.
+            </remarks>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.#ctor">
+            <summary>Creates a new mass storage with default parameters.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>Creates a new mass storage.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maxPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+            <param name="interfaceName">The name of the interface.</param>
+            <param name="logicalUnitCount">The number of logical units in this device.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.AttachLogicalUnit(GHI.IO.Storage.IRemovable)">
+            <summary>Attaches a removable storage device.</summary>
+            <param name="storage">The storage device to attach.</param>
+            <returns>The number associated with the new logical unit</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.AttachLogicalUnit(GHI.IO.Storage.IRemovable,System.Int32)">
+            <summary>Attaches a removable storage device to a logical unit.</summary>
+            <param name="storage">The storage device to attach.</param>
+            <param name="number">The logical unit number.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.AttachLogicalUnit(GHI.IO.Storage.IRemovable,System.Int32,System.String,System.String)">
+            <summary>Attaches a removable storage device to a logical unit.</summary>
+            <param name="storage">The storage device to attach.</param>
+            <param name="number">The logical unit number.</param>
+            <param name="vendor">The vendor name.</param>
+            <param name="product">The product name.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.EnableLogicalUnit(System.Int32)">
+            <summary>Enables the logical unit associated with the given number.</summary>
+            <param name="number">The logical unit number.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.MassStorage.DisableLogicalUnit(System.Int32)">
+            <summary>Disables the logical unit associated with the given number.</summary>
+            <param name="number">The logical unit number.</param>
+        </member>
+        <member name="P:GHI.Usb.Client.MassStorage.MaximumSupportedLogicalUnits">
+            <summary>The maximum number of logical units that any mass storage can support.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.MassStorage.LogicalUnitCount">
+            <summary>The number of logical units assocaited with this mass storage.</summary>
+        </member>
+        <member name="T:GHI.Usb.Client.Mouse">
+            <summary>This device emulates a mouse. You can send the x, y, and wheel delta positions and the state of the five available buttons.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.#ctor">
+            <summary>Creates a new mouse with default parameters.</summary>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.String,System.String,System.String,System.String)">
+            <summary>Creates a new mouse.</summary>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="version">The device version.</param>
+            <param name="maxPower">The maximum power required from bus in milliamps.</param>
+            <param name="manufacturer">The manufacturer name.</param>
+            <param name="product">The product name.</param>
+            <param name="serialNumber">The device serial number.</param>
+            <param name="interfaceName">The name of the interface.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.IsPressed(GHI.Usb.Buttons)">
+            <summary>Whether or not the given button is pressed.</summary>
+            <param name="button">The button to check.</param>
+            <returns>If it is pressed or not.</returns>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.SendRawData(System.Int32,System.Int32,System.Int32,GHI.Usb.Buttons)">
+            <summary>Sends mouse delta positions and button states to the host.</summary>
+            <param name="deltaX">Change in the x direction from -127 to 127.</param>
+            <param name="deltaY">Change in the y direction from -127 to 127.</param>
+            <param name="deltaWheel">Change in the mouse wheel position from -127 to 127.</param>
+            <param name="buttonsState">The currently pressed buttons.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.PressButton(GHI.Usb.Buttons)">
+            <summary>Presses the given button.</summary>
+            <param name="button">The button to press.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.ReleaseButton(GHI.Usb.Buttons)">
+            <summary>Releases the given button.</summary>
+            <param name="button">The button to release.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.Click(GHI.Usb.Buttons)">
+            <summary>Presses then releases the given button.</summary>
+            <param name="button">The button to click.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.Click(GHI.Usb.Buttons,System.Int32)">
+            <summary>Presses then releases the given button with the given delay between the actions.</summary>
+            <param name="button">The button to click.</param>
+            <param name="delay">The delay between the actions.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.DoubleClick(GHI.Usb.Buttons)">
+            <summary>Presses then releases the given button twice.</summary>
+            <param name="button">The button to double click.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.DoubleClick(GHI.Usb.Buttons,System.Int32)">
+            <summary>Presses then releases the given button twice with the given delay between the clicks.</summary>
+            <param name="delay">The delay between the clicks.</param>
+            <param name="button">The button to double click.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.DoubleClick(GHI.Usb.Buttons,System.Int32,System.Int32)">
+            <summary>Presses then releases the given button twice with the given delay between the clicks and the actions.</summary>
+            <param name="delay">The delay between the clicks.</param>
+            <param name="releaseDelay">The delay between the press and release of each click.</param>
+            <param name="button">The button to double click.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveWheelTo(System.Int32)">
+            <summary>Moves the wheel to the given position.</summary>
+            <param name="position">The new position.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveWheelTo(System.Int32,System.Int32)">
+            <summary>Moves the wheel to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveWheelTo(System.Int32,System.Int32,System.Int32)">
+            <summary>Moves the wheel to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+            <param name="stepDelay">How long to wait between each step.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveXTo(System.Int32)">
+            <summary>Moves the cursor's x coordinate to the given position.</summary>
+            <param name="position">The new position.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveXTo(System.Int32,System.Int32)">
+            <summary>Moves the cursor's x coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveXTo(System.Int32,System.Int32,System.Int32)">
+            <summary>Moves the cursor's x coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+            <param name="stepDelay">How long to wait between each step.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveYTo(System.Int32)">
+            <summary>Moves the cursor's y coordinate to the given position.</summary>
+            <param name="position">The new position.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveYTo(System.Int32,System.Int32)">
+            <summary>Moves the cursor's y coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveYTo(System.Int32,System.Int32,System.Int32)">
+            <summary>Moves the cursor's y coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="position">The new position.</param>
+            <param name="step">The amount by which to increment the position each request.</param>
+            <param name="stepDelay">How long to wait between each step.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveCursorTo(System.Int32,System.Int32)">
+            <summary>Moves the cursor's x and y coordinate to the given position.</summary>
+            <param name="x">The new x position.</param>
+            <param name="y">The new p position.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveCursorTo(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Moves the cursor's x and y coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="x">The new x position.</param>
+            <param name="y">The new p position.</param>
+            <param name="stepX">The amount by which to increment the x position each request.</param>
+            <param name="stepY">The amount by which to increment the y position each request.</param>
+        </member>
+        <member name="M:GHI.Usb.Client.Mouse.MoveCursorTo(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Moves the cursor's x and y coordinate to the given position with the given step since each action can move at most 127 units.</summary>
+            <param name="x">The new x position.</param>
+            <param name="y">The new p position.</param>
+            <param name="stepX">The amount by which to increment the x position each request.</param>
+            <param name="stepY">The amount by which to increment the y position each request.</param>
+            <param name="stepDelay">How long to wait between each step.</param>
+        </member>
+        <member name="P:GHI.Usb.Client.Mouse.MaxStep">
+            <summary>The maximum step amount for movement.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Mouse.MinStep">
+            <summary>The minimum step amount for movement.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Mouse.WheelPosition">
+            <summary>The current wheel position.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Mouse.CursorX">
+            <summary>The current x coordinate of the cursor.</summary>
+        </member>
+        <member name="P:GHI.Usb.Client.Mouse.CursorY">
+            <summary>The current y coordinate of the cursor.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.BaseDevice">
+            <summary>Represents a USB device connected.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.disposed">
+            <summary>Whether or not the object has been disposed.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.BaseDevice.Dispose">
+            <summary>Disconnects and disposes the device.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.BaseDevice.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.BaseDevice.Dispose(System.Boolean)">
+            <summary>Disconnects and disposes the device.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.BaseDevice.CheckObjectState(System.Boolean)">
+            <summary>Verifies that the object is connected and not disposed.</summary>
+            <param name="throwOnInvalid">If the object is connected or disposed, whether or not to throw an exception.</param>
+            <returns>True if the object is connected and not disposed, false otherwise.</returns>
+        </member>
+        <member name="E:GHI.Usb.Host.BaseDevice.Disconnected">
+            <summary>The event is fired when the device disconnects.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.Connected">
+            <summary>Whether or not the device is connected.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.Id">
+            <summary>The device id.</summary>
+            <remarks>This is unique among the currently connected USB devices. It will be the same for a device with multiple interfaces.</remarks>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.InterfaceIndex">
+            <summary>The logical device interface index.</summary>
+            <remarks>
+            Some USB devices might have multiple functions represented as multiple interfaces. If a device functions as a whole, this will be equal to NO_INTERFACE_ASSOCIATED.
+            </remarks>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.Type">
+            <summary>The device's type.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.VendorId">
+            <summary>The devic's vendor id.</summary>
+            <remarks>This is unique per company.</remarks>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.ProductId">
+            <summary>The device's product id.</summary>
+            <remarks>This is unique per product for a certain company.</remarks>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.PortNumber">
+            <summary>The device's USB port number.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.BaseDevice.WorkerInterval">
+            <summary>How often the internal worker callback is called.</summary>
+            <remarks>Timeout.Infinite or 0 disable the internal worker.</remarks>
+        </member>
+        <member name="T:GHI.Usb.Host.BaseDevice.DisconnectedEventHandler">
+            <summary>The event handler type for when the device disconnects.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.BaseDevice.DeviceType">
+            <summary>Possible device types.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Unknown">
+            <summary>The device is not recognized.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Hub">
+            <summary>USB Hub.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.HID">
+            <summary>Human Interface Device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Mouse">
+            <summary>Mouse.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Keyboard">
+            <summary>Keyboard.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Joystick">
+            <summary>Joystick.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.MassStorage">
+            <summary>Mass Storage. This includes USB storage devices such as USB Thumbs drives and USB hard disks.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Printer">
+            <summary>Printer.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialFTDI">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialProlific">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialProlific2">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialSiLabs">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialCDC">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SerialSierraC885">
+            <summary>USB to Serial device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.SierraInstaller">
+            <summary>Sierra Installer.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Video">
+            <summary>Video device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.BaseDevice.DeviceType.Webcam">
+            <summary>Webcamera.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.DescriptorType">
+            <summary>The possible types of descriptors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.DescriptorType.Device">
+            <summary>The device descriptor type.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.DescriptorType.Configuration">
+            <summary>The configuration descriptor type.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.DescriptorType.String">
+            <summary>The string descriptor type.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.DescriptorType.Interface">
+            <summary>The interface descriptor type.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.DescriptorType.Endpoint">
+            <summary>The endpoint descriptor type.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.BaseDescriptor">
+            <summary>The base USB descriptor.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.BaseDescriptor.Length">
+            <summary>Length of descriptor in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.BaseDescriptor.Type">
+            <summary>The type of the descriptor.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.BaseDescriptor.#ctor(GHI.Usb.Descriptors.DescriptorType,System.Byte)">
+            <summary>Creates a new base descriptor</summary>
+            <param name="type">The type of the derived descriptor</param>
+            <param name="length">The length of the descriptor.</param>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.Device">
+            <summary>Device descriptor.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.LENGTH">
+            <summary>The length of the descriptor in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.UsbSpecificationNumber">
+            <summary>USB specification number that the device implements as a BCD.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ClassCode">
+            <summary>The class code of the device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.SubclassCode">
+            <summary>The subclass code.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ProtocalCode">
+            <summary>The protocal code.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.MaximumPacketSize">
+            <summary>The max packet size for endpoint zero.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.VendorId">
+            <summary>The vendor id.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ProductId">
+            <summary>The product id.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ReleaseNumber">
+            <summary>The device release number as a BCD.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ManufacturerIndex">
+            <summary>The manufacturer string descriptor index.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.ProductIndex">
+            <summary>The product string descriptor index.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.SerialNumberIndex">
+            <summary>The serial number string descriptor index.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Device.NumberOfConfigurations">
+            <summary>The number of possible configurations.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Device.#ctor(System.Byte[])">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Device.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+            <param name="offset">The offset into the buffer at which to start.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Device.#ctor">
+            <summary>Constructs a new descriptor.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.Configuration">
+            <summary>Configuration descriptor.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.LENGTH">
+            <summary>The length of the descriptor in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.TotalLength">
+            <summary>Total length of the the data returned in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.NumberOfInterfaces">
+            <summary>The number of interfaces.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.Value">
+            <summary>The value to be used as an argument to select this configuration.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.Index">
+            <summary>The configuration string descriptor index.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.Attributes">
+            <summary>A bitmap representing the attributes of the device.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.MaxPower">
+            <summary>The maximum power consumption in 2mA units.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.AuxiliaryDescriptors">
+            <summary>Child auxiliary descriptors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Configuration.Interfaces">
+            <summary>Child interface descriptors.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Configuration.#ctor(System.Byte[])">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Configuration.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+            <param name="offset">The offset into the buffer at which to start.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Configuration.#ctor">
+            <summary>Constructs a new descriptor.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.Interface">
+            <summary>Interface descriptor.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.LENGTH">
+            <summary>The length of the descriptor in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.Number">
+            <summary>The number of the interface.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.AlternateSetting">
+            <summary>The value used to select alternate settings.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.NumberEndpoints">
+            <summary>The number of endpoints for this interface.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.ClassCode">
+            <summary>The class code.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.SubclassCode">
+            <summary>The subclass code.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.ProtocolCode">
+            <summary>The protocal code.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.Index">
+            <summary>The interface string descriptor index.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.AuxiliaryDescriptors">
+            <summary>Child auxiliary descriptors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Interface.Endpoints">
+            <summary>Child endpoint descriptors.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Interface.#ctor(System.Byte[])">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Interface.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+            <param name="offset">The offset into the buffer at which to start.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Interface.#ctor">
+            <summary>Constructs a new descriptor.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.Endpoint">
+            <summary>Endpoint descriptor.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.LENGTH">
+            <summary>The length of the descriptor in bytes.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.Address">
+            <summary>The endpoint address.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.Attributes">
+            <summary>The attributes of the endpoint.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.MaximumPacketSize">
+            <summary>The maximum packet size this endpoint can transmit.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.Interval">
+            <summary>The interval for data transfer pooling in frame counts.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Endpoint.AuxiliaryDescriptors">
+            <summary>Child auxiliary descriptors.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Endpoint.#ctor(System.Byte[])">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Endpoint.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+            <param name="offset">The offset into the buffer at which to start.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Endpoint.#ctor">
+            <summary>Constructs a new descriptor.</summary>
+        </member>
+        <member name="T:GHI.Usb.Descriptors.Auxiliary">
+            <summary>Represents additional auxiliary descriptors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Descriptors.Auxiliary.Payload">
+            <summary>The payload of the descriptor excluding length and type.</summary>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Auxiliary.#ctor(System.Byte[])">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+        </member>
+        <member name="M:GHI.Usb.Descriptors.Auxiliary.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructs a new descriptor.</summary>
+            <param name="buffer">The buffer with which to populate the descriptor.</param>
+            <param name="offset">The offset into the buffer at which to start.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick">
+            <summary>Allows a usb device to be used as a joystick.</summary>
+            <remarks>By default, the reported range for position is between -512 and 512. There is an internal thread that processes the device events.</remarks>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte)">
+            <summary>Creates a new joystick.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.SetCursorBounds(GHI.Usb.Cursor,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Sets the bounds for given cursor.</summary>
+            <param name="cursor">The cursor for which to set the bounds.</param>
+            <param name="minX">The minimum X value.</param>
+            <param name="maxX">The maximum X value.</param>
+            <param name="minY">The minimum Y value.</param>
+            <param name="maxY">The maximum Y value.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.GetButtonState(System.Int32)">
+            <summary>Gets the current button state.</summary>
+            <param name="buttonNumber">The button number to query.</param>
+            <returns>The state of the button.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.Dispose(System.Boolean)">
+            <summary>Disposes the joystick.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Joystick.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="E:GHI.Usb.Host.Joystick.ButtonChanged">
+            <summary>The event fired when one of the joystick's buttons is pressed or released.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Joystick.CursorMoved">
+            <summary>The event fired when the joystick's cursor has moved.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Joystick.HatSwitchPressed">
+            <summary>The event fired when the joystick's hat switch has been pressed.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Joystick.Capabilities">
+            <summary>The capabilities of the joystick.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Joystick.CursorPosition">
+            <summary>The current position of the first cursor.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Joystick.Cursor2Position">
+            <summary>The current position of the second cursor.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Joystick.CurrentHatSwitchDirection">
+            <summary>The current direction of the hat switch.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.ButtonChangedEventHandler">
+            <summary>The delegate for when one of the joystick's button is pressed or released.</summary>
+            <param name="sender">The joystick associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.CursorMovedEventHandler">
+            <summary>The delegate for when one of the joystick's cursors moves.</summary>
+            <param name="sender">The joystick associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.HatSwitchPressedEventHandler">
+            <summary>The delegate for when the joystick's hat switch is pressed.</summary>
+            <param name="sender">The joystick associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.DeviceCapabilities">
+            <summary>Joystick capabilities.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.CursorX">
+            <summary>Has X on cursor 1.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.CursorY">
+            <summary>Has Y on cursor 1.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.Cursor2X">
+            <summary>Has X on cursor 2.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.Cursor2Y">
+            <summary>Has Y on cursor 2.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.HatSwitch">
+            <summary>Has a hat switch.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.DeviceCapabilities.Buttons">
+            <summary>Has buttons.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.ButtonChangedEventArgs">
+            <summary>The events args for the ButtonPressed and ButtonReleased events.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.ButtonChangedEventArgs.Which">
+            <summary>The index of the changed button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.ButtonChangedEventArgs.State">
+            <summary>The new state of the button.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.CursorMovedEventArgs">
+            <summary>The events args for the CursorMoved event.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.CursorMovedEventArgs.Which">
+            <summary>The index of the changed button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.CursorMovedEventArgs.NewPosition">
+            <summary>The new state of the button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.CursorMovedEventArgs.Delta">
+            <summary>The change from the last position.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Joystick.HatSwitchPressedEventArgs">
+            <summary>The events args for the HatSwitchPressed event.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Joystick.HatSwitchPressedEventArgs.Direction">
+            <summary>The new direction of the hat switch.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Keyboard">
+            <summary>Allows a usb device to be used as a keyboard.</summary>
+            <remarks>
+            The CharUp and CharDown events are only fired when a given key press has a corresponding ASCII key code. There is an internal thread that
+            processes the device events.
+            </remarks>
+        </member>
+        <member name="M:GHI.Usb.Host.Keyboard.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte)">
+            <summary>Creates a new keyboard.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Keyboard.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Keyboard.IsKeyPressed(GHI.Usb.Key)">
+            <summary>Gets the current state of a key.</summary>
+            <param name="key">The key to query.</param>
+            <returns>The state of the key.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.Keyboard.Dispose(System.Boolean)">
+            <summary>Disposes the keyboard.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Keyboard.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="E:GHI.Usb.Host.Keyboard.KeyUp">
+            <summary>Fired when a key is released.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Keyboard.KeyDown">
+            <summary>Fired when a key is pressed.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Keyboard.CharUp">
+            <summary>Fired when a key is released and it can be converted to ASCII.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Keyboard.CharDown">
+            <summary>Fired when a key is pressed and it can be converted to ASCII.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Keyboard.KeyboardEventHandler">
+            <summary>The handler for used for keyboard callbacks.</summary>
+            <param name="sender">The object associated with this event.</param>
+            <param name="args">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Keyboard.KeyboardEventArgs">
+            <summary>Event arguments for the keyboard events.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Keyboard.KeyboardEventArgs.Which">
+            <summary>The Key associated with the event.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Keyboard.KeyboardEventArgs.ASCII">
+            <summary>The ASCII representation of the key, if available. Otherwise, this value is <b>0</b>.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.MassStorage">
+            <summary>Allows a usb device to be used as a mass storage device.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte)">
+            <summary>Creates a new mass storage.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.ForceInitialization">
+            <summary>Forces initialization the device. Regular users do not need this function.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.Mount">
+            <summary>
+            Mounts the file system for the storage device. Once the file system is prepared by NETMF and ready to use, the RemovableMedia.Insert event
+            will be fired.
+            </summary>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.Unmount">
+            <summary>Unmounts the file system for the storage device.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.MassStorage.Dispose(System.Boolean)">
+            <summary>Disposes the object.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.Usb.Host.MassStorage.Mounted">
+            <summary>Whether or not the device is mounted.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.MassStorage.LogicalUnitIndex">
+            <summary>The mass storage logical unit index.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.MassStorage.WorkerInterval">
+            <summary>Not supported.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse">
+            <summary>Allows a usb device to be used a mouse.</summary>
+            <remarks>
+            By default, the reported range for position is between 0 and 512 and between -512 and 512 for delta values. There is an internal thread that
+            processes the device events.
+            </remarks>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte)">
+            <summary>Creates a new mouse.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.SetScale(System.Single)">
+            <summary>Scales the x, y, and wheel delta values.</summary>
+            <param name="scale">The value by which to scale the data.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.SetCursorBounds(GHI.Usb.Position,GHI.Usb.Position)">
+            <summary>Sets the cursor bounds.</summary>
+            <param name="minimum">The minimum bound.</param>
+            <param name="maximum">The maximum bound.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.SetCursorPosition(GHI.Usb.Position)">
+            <summary>Sets the cursor position.</summary>
+            <param name="newPosition">The new position of the cursor.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.Dispose(System.Boolean)">
+            <summary>Disposes the mouse.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Mouse.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="E:GHI.Usb.Host.Mouse.ButtonChanged">
+            <summary>The event fired when one of the mouse's buttons is pressed or released.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Mouse.WheelMoved">
+            <summary>The event fired when the mouse's wheel has moved.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Mouse.CursorMoved">
+            <summary>The event fired when the mouse's cursor has moved.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.LeftButtonState">
+            <summary>The current state of the mouse's left button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.RightButtonState">
+            <summary>The current state of the mouse's right button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.MiddleButtonState">
+            <summary>The current state of the mouse's middle button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.Extended1ButtonState">
+            <summary>The current state of the mouse's first extended button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.Extended2ButtonState">
+            <summary>The current state of the mouse's second extended button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.CursorPosition">
+            <summary>The current position of the cursor.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.WheelPosition">
+            <summary>The current position of the mouse wheel.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.ButtonChangedEventHandler">
+            <summary>The delegate for when one of the mouse's button is pressed or released.</summary>
+            <param name="sender">The mouse associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.WheelMovedEventHandler">
+            <summary>The delegate for when the mouse's wheel moves.</summary>
+            <param name="sender">The mouse associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.CursorMovedEventHandler">
+            <summary>The delegate for when the mouse's cursor moves.</summary>
+            <param name="sender">The mouse associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.ButtonChangedEventArgs">
+            <summary>The events args for the ButtonPressed and ButtonReleased events.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.ButtonChangedEventArgs.Which">
+            <summary>Which button changed its state.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.ButtonChangedEventArgs.State">
+            <summary>The new state of the button.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.WheelMovedEventArgs">
+            <summary>The events args for the WheelMoved event.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.WheelMovedEventArgs.NewPosition">
+            <summary>The new position of the wheel.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.WheelMovedEventArgs.Delta">
+            <summary>The change from the last position.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Mouse.CursorMovedEventArgs">
+            <summary>The events args for the CursorMoved event.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.CursorMovedEventArgs.NewPosition">
+            <summary>The new state of the button.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Mouse.CursorMovedEventArgs.Delta">
+            <summary>The change from the last position.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.RawDevice">
+            <summary>
+            Provides low level access functionalities for the connected USB device. This is useful if there is not already a predefined driver for that device.
+            </summary>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte,GHI.Usb.Host.BaseDevice.DeviceType)">
+            <summary>Creates a new raw device.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+            <param name="deviceType">The device type.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.OpenPipe(GHI.Usb.Descriptors.Endpoint)">
+            <summary>Opens a new communication pipe.</summary>
+            <param name="endpoint">The descriptor for the communication endpoint.</param>
+            <returns>The new pipe.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.SendSetupPacket(System.Byte,System.Byte,System.UInt16,System.UInt16)">
+            <summary>Sends a USB setup packet.</summary>
+            <param name="requestType">The request type, receipient, and direction.</param>
+            <param name="request">The request to make.</param>
+            <param name="value">The value of the request.</param>
+            <param name="index">The index of the request.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.SendSetupPacket(System.Byte,System.Byte,System.UInt16,System.UInt16,System.Byte[],System.Int32,System.Int32)">
+            <summary>Sends a USB setup packet.</summary>
+            <param name="requestType">The request type, receipient, and direction.</param>
+            <param name="request">The request to make.</param>
+            <param name="value">The value of the request.</param>
+            <param name="index">The index of the request.</param>
+            <param name="data">The data to receive.</param>
+            <param name="dataOffset">The offset into data at which to receive the data.</param>
+            <param name="dataCount">The number of bytes to receive into data starting at offset.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.GetDeviceDescriptor">
+            <summary>Gets the device descriptor.</summary>
+            <returns>The device descriptor.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.GetConfigurationDescriptor(System.Byte)">
+            <summary>Gets the configuration descriptor.</summary>
+            <param name="configurationIndex">The configuration index.</param>
+            <returns>The configuration descriptor.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Dispose(System.Boolean)">
+            <summary>Disconnects and disposes the device.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.RawDevice.Pipe">
+            <summary>A USB communication pipe.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Pipe.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Pipe.Transfer(System.Byte[])">
+            <summary>Transfers data to/from the endpoint.</summary>
+            <param name="buffer">The transfer buffer.</param>
+            <returns>The number of bytes successfully transferred.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Pipe.Transfer(System.Byte[],System.Int32,System.Int32)">
+            <summary>Transfers data to/from the endpoint.</summary>
+            <param name="buffer">The transfer buffer.</param>
+            <param name="offset">The offset into the buffer.</param>
+            <param name="count">The amount to transfer starting at offset from the buffer.</param>
+            <returns>The number of bytes successfully transferred.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Pipe.Dispose">
+            <summary>Disconnects and disposes the device.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.RawDevice.Pipe.Dispose(System.Boolean)">
+            <summary>Disconnects and disposes the device.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="P:GHI.Usb.Host.RawDevice.Pipe.TransferTimeout">
+            <summary>The timeout for transfer operations. Defaults to 500ms.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.RawDevice.Pipe.Endpoint">
+            <summary>Endpoint associated with this pipe.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller">
+            <summary>
+            This class provides the ability to access the devices connected to the USB Host. You can connect multiple devices and the connect and
+            disconnect events are sent for each device with a unique Id. Some devices might have multiple functions represented as interfaces. These are
+            reported with the same Id but will differ in InterfaceIndex. Make sure to process the events from each device as fast as possible. These are
+            handled in a special thread that may suspend other threads. There is built in support for several USB devices: mass storage, mice, printers,
+            keyboards, joysticks, and serial converters. If a driver is not available, you can use RawDevice to access it but that requires knowledge of
+            USB specifications. See https://www.ghielectronics.com/docs/36/ for more information.
+            </summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Controller.Start">
+            <summary>Starts the USB Host controller.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Controller.GetConnectedDevices">
+            <summary>Gets a list of the currently connected devices.</summary>
+            <returns>The currently connected devices.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.Controller.Reset">
+            <summary>Resets the USB host controller.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Controller.GetLastError">
+            <summary>Gets the last USB error that occured.</summary>
+            <returns>The error that occured.</returns>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.DeviceConnectFailed">
+            <summary>Raised when a device fails to connect properly.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.JoystickConnected">
+            <summary>Raised when a joystick connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.KeyboardConnected">
+            <summary>Raised when a keyboard connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.MassStorageConnected">
+            <summary>Raised when a mass storage device connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.MouseConnected">
+            <summary>Raised when a mouse connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.UnknownDeviceConnected">
+            <summary>Raised when a raw device connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.UsbSerialConnected">
+            <summary>Raised when a usb serial converter connects.</summary>
+        </member>
+        <member name="E:GHI.Usb.Host.Controller.WebcamConnected">
+            <summary>Raised when a webcam connects.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.DeviceConnectFailedEventHandler">
+            <summary>The delegate used for the DeviceConnectFailed event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.JoystickConnectedEventHandler">
+            <summary>The delegate used for the JoystickConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.KeyboardConnectedEventHandler">
+            <summary>The delegate used for the KeyboardConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.MassStorageConnectedEventHandler">
+            <summary>The delegate used for the MassStorageConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.MouseConnectedEventHandler">
+            <summary>The delegate used for the MouseConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventHandler">
+            <summary>The delegate used for the RawDeviceConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.UsbSerialConnectedEventHandler">
+            <summary>The delegate used for the UsbSerialConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.WebcamConnectedEventHandler">
+            <summary>The delegate used for the WebcamConnected event.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.Error">
+            <summary>USB host errors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.NoError">
+            <summary>No error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.DeviceBusy">
+            <summary>Device is busy. Try communicating with the device at a later time.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.TransferError">
+            <summary>Transfer Error. Try Transferring again.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MaxDeviceUsage">
+            <summary>Maximum available handles reached.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.DeviceNotOnline">
+            <summary>Device is not connected.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.OutOfMemory">
+            <summary>Out of memory.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MaxUsbDevicesReached">
+            <summary>Maximum USB devices connected (127).</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.HIDParserError">
+            <summary>HID parse error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.HIDParserItemNotFound">
+            <summary>HID item not found.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeNoError">
+            <summary>Transfer completed successfully.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeCRC">
+            <summary>Transfer error. Make sure you have enough power for the USB device and connections are stable.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeBitStuffing">
+            <summary>Transfer error. Make sure you have enough power for the USB device and connections are stable.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeDataToggle">
+            <summary>
+            Transfer error. Make sure you have enough power for the USB device and connections are stable. This error means there might be some
+            missing USB packets during communications. In many cases you can ignore this error if missing some packets is not significant. Several
+            USB devices might drop some packets or incorrectly produce this error.
+            </summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeStall">
+            <summary>Transfer error. USB device refused the transfer. Check sent USB packet.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeNoResponse">
+            <summary>Transfer error. Make sure you have enough power for the USB device and connections are stable.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodePIDCheck">
+            <summary>Transfer error. Make sure you have enough power for the USB device and connections are stable.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodePIDUnExpected">
+            <summary>Transfer error. Make sure you have enough power for the USB device and connections are stable.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeDataOverRun">
+            <summary>Transfer error. Endpoint returned more data than expected.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeDataUnderRun">
+            <summary>Transfer error. Endpoint returned less data than expected.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeBufferOverRun">
+            <summary>Transfer error. HC received data from endpoint faster than it could be written to system memory.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeBufferUnderRun">
+            <summary>Transfer error. HC could not retrieve data from system memory fast enough to keep up with data USB data rate.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeNotAccessed">
+            <summary>Software use.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.CompletionCodeNotAccessedF">
+            <summary>Software use.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSError">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSCSWCommandFailed">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSCSWStatusPhaseError">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSCSW">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSWrongLunNumber">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSWrongSignature">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSTagMissmatched">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="F:GHI.Usb.Host.Controller.Error.MSNotReady">
+            <summary>Mass Storage error.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs">
+            <summary>Events args for the UnknownDeviceConnected event.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.Id">
+            <summary>The device id.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.InterfaceIndex">
+            <summary>The logical device interface index.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.Type">
+            <summary>The device's type.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.VendorId">
+            <summary>The devic's vendor id.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.ProductId">
+            <summary>The device's product id.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Controller.UnknownDeviceConnectedEventArgs.PortNumber">
+            <summary>The device's USB port number.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.UsbSerial">
+            <summary>Allows a usb device to be used as a usb to serial converter.</summary>
+            <remarks>
+            This port will appear similar to a regular COM port, though not all functionality is present. Support for FTDI devices is built in.
+            </remarks>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte,GHI.Usb.Host.BaseDevice.DeviceType)">
+            <summary>Creates a new usb serial.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+            <param name="deviceType">The device type.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.DiscardInBuffer">
+            <summary>Discards the data in the input buffer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.DiscardOutBuffer">
+            <summary>Discards the data in the output buffer. Not currently supported.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Flush">
+            <summary>Writes any pending buffered data. Not currently supported.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Write(System.Byte)">
+            <summary>Writes a byte out over the port.</summary>
+            <param name="value">The byte to send.</param>
+            <returns>Whether or not the byte was written.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Read">
+            <summary>Reads a single byte in from the port. It will block until a byte is received.</summary>
+            <returns>The byte read.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Write(System.Byte[])">
+            <summary>Writes data out over the port.</summary>
+            <param name="buffer">The buffer to send.</param>
+            <returns>Number of bytes written.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Read(System.Byte[])">
+            <summary>Reads data in from the port.</summary>
+            <param name="buffer">The buffer into which the read data will be written.</param>
+            <returns>The number of bytes read.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>Writes data out over the port.</summary>
+            <param name="buffer">The buffer to send.</param>
+            <param name="offset">To offset into the buffer at which to begin sending.</param>
+            <param name="count">The number of bytes to send..</param>
+            <returns>Number of bytes written.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>Reads data in from the port.</summary>
+            <param name="buffer">The buffer into which the read data will be written.</param>
+            <param name="offset">To offset into the buffer at which to begin writing.</param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>The number of bytes read.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.Dispose(System.Boolean)">
+            <summary>Disposes the printer.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.UsbSerial.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="E:GHI.Usb.Host.UsbSerial.DataReceived">
+            <summary>The event fired when the port has received data.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.ReadTimeout">
+            <summary>The time after which a read operation will return if not yet completed.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.WriteTimeout">
+            <summary>The time after which a write operation will return if not yet completed.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.BaudRate">
+            <summary>The baud rate the device uses.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.DataBits">
+            <summary>The number of data bits the device uses.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.Handshake">
+            <summary>The level of handshaking the device uses.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.Parity">
+            <summary>The parity the device uses.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.StopBits">
+            <summary>The number of stop bits the device uses.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.UsbSerial.DataReceivedEventHandler">
+            <summary>The delegate for when the port receives data.</summary>
+            <param name="sender">The port associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.UsbSerial.DataReceivedEventArgs">
+            <summary>The events args for the DataReceived event.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.DataReceivedEventArgs.Data">
+            <summary>The data received.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.UsbSerial.DataReceivedEventArgs.Length">
+            <summary>The number of bytes received.</summary>
+        </member>
+        <member name="T:GHI.Usb.Host.Webcam">
+            <summary>Allows a usb device to be used as a webcam.</summary>
+            <remarks>
+            This class provides support for standard USB webcams. The standard webcams are USB video class compliant. These webcams don't require drivers
+            and are directly supported by Windows. Only webcams with native YUV2 image format are supported. Only one webcam can stream at a time and it
+            is very processing intensive.
+            </remarks>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.#ctor(System.UInt32,System.Byte,System.UInt16,System.UInt16,System.Byte)">
+            <summary>Creates a new webcam.</summary>
+            <param name="id">The device id.</param>
+            <param name="interfaceIndex">The device interface index.</param>
+            <param name="vendorId">The device vendor id.</param>
+            <param name="productId">The device product id.</param>
+            <param name="portNumber">The device port number.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.Finalize">
+            <summary>The finalizer.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.StartStreaming(GHI.Usb.Host.Webcam.ImageFormat)">
+            <summary>Starts streaming images in provided format. The ImageAvailable event will fire when a new image is ready.</summary>
+            <remarks>The image is buffered in the background. It may take up to one or two seconds for the first image to be ready.</remarks>
+            <param name="format">The format of the image taken from SupportedFormats.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.StopStreaming">
+            <summary>Stops streaming images.</summary>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.IsNewImageAvailable">
+            <summary>Gets whether or not a new image is available to be drawn.</summary>
+            <returns>Whether or not a new image is available.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.GetImage">
+            <summary>Returns a bitmap representing the last availabe image.</summary>
+            <returns>The bitmap for the image.</returns>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.GetImage(Microsoft.SPOT.Bitmap)">
+            <summary>
+            Draws the currently available webcam image to the given bitmap. The image is automatically cropped to match the bitmap's dimensions.
+            </summary>
+            <param name="bitmap">Image drawing will be done on this bitmap.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.GetImage(Microsoft.SPOT.Bitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Draws the currently available webcam image to the given bitmap. The image is automatically cropped to match the bitmap's dimensions.
+            </summary>
+            <param name="bitmap">Image drawing will be done on this bitmap.</param>
+            <param name="x">The x coordinate at which to begin drawing in the bitmap.</param>
+            <param name="y">The y coordinate at which to begin drawing in the bitmap.</param>
+            <param name="width">The width to draw.</param>
+            <param name="height">The height to draw.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.Dispose(System.Boolean)">
+            <summary>Disposes the webcam.</summary>
+            <param name="disposing">Whether or not this is called from Dispose.</param>
+        </member>
+        <member name="M:GHI.Usb.Host.Webcam.CheckEvents(System.Object)">
+            <summary>Repeatedly called with a period defined by WorkerInterval. Used to poll the device for data and raise any desired events.</summary>
+            <param name="sender">Always null.</param>
+        </member>
+        <member name="E:GHI.Usb.Host.Webcam.ImageAvailable">
+            <summary>The event fired when the port has received data.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Webcam.SupportedFormats">
+            <summary>The supported formats for the connected webcam.</summary>
+            <returns>The supported formats.</returns>
+        </member>
+        <member name="P:GHI.Usb.Host.Webcam.CurrentStreamingFormat">
+            <summary>The current streaming format.</summary>
+            <returns>The formats.</returns>
+        </member>
+        <member name="T:GHI.Usb.Host.Webcam.ImageAvailableEventHandler">
+            <summary>The delegate for when the port receives data.</summary>
+            <param name="sender">The port associated with this event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:GHI.Usb.Host.Webcam.ImageFormat">
+            <summary>An image format supported by the device.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Webcam.ImageFormat.Width">
+            <summary>The supported width.</summary>
+        </member>
+        <member name="P:GHI.Usb.Host.Webcam.ImageFormat.Height">
+            <summary>The supported height.</summary>
+        </member>
+        <member name="T:GHI.Usb.Buttons">
+            <summary>Lists available mouse buttons.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.None">
+            <summary>No button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.Left">
+            <summary>The left button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.Right">
+            <summary>The right button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.Middle">
+            <summary>The middle button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.Extended1">
+            <summary>The first extended button.</summary>
+        </member>
+        <member name="F:GHI.Usb.Buttons.Extended2">
+            <summary>The second extended button.</summary>
+        </member>
+        <member name="T:GHI.Usb.ButtonState">
+            <summary>The possible button states.</summary>
+        </member>
+        <member name="F:GHI.Usb.ButtonState.Released">
+            <summary>The button is released.</summary>
+        </member>
+        <member name="F:GHI.Usb.ButtonState.Pressed">
+            <summary>The button is pressed.</summary>
+        </member>
+        <member name="T:GHI.Usb.Cursor">
+            <summary>The possible cursors.</summary>
+        </member>
+        <member name="F:GHI.Usb.Cursor.Cursor1">
+            <summary>Cursor 1.</summary>
+        </member>
+        <member name="F:GHI.Usb.Cursor.Cursor2">
+            <summary>Cursor 2.</summary>
+        </member>
+        <member name="T:GHI.Usb.Key">
+            <summary>The keys on the keyboard.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.None">
+            <summary>No key.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.A">
+            <summary>A.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.B">
+            <summary>B.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.C">
+            <summary>C.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D">
+            <summary>D.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.E">
+            <summary>E.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F">
+            <summary>F.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.G">
+            <summary>G.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.H">
+            <summary>H.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.I">
+            <summary>I.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.J">
+            <summary>J.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.K">
+            <summary>K.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.L">
+            <summary>L.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.M">
+            <summary>M.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.N">
+            <summary>N.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.O">
+            <summary>O.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.P">
+            <summary>P.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Q">
+            <summary>Q.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.R">
+            <summary>R.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.S">
+            <summary>S.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.T">
+            <summary>T.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.U">
+            <summary>U.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.V">
+            <summary>V.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.W">
+            <summary>W.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.X">
+            <summary>X.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Y">
+            <summary>Y.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Z">
+            <summary>Z.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D1">
+            <summary>1 or !.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D2">
+            <summary>2 or @.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D3">
+            <summary>3 or #.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D4">
+            <summary>4 or $.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D5">
+            <summary>5 or %.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D6">
+            <summary>6 or ^.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D7">
+            <summary>7 or &amp;.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D8">
+            <summary>8 or *.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D9">
+            <summary>9 or (.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.D0">
+            <summary>0 or ).</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Enter">
+            <summary>Enter.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Escape">
+            <summary>Esc.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.BackSpace">
+            <summary>Backspace.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Tab">
+            <summary>Tab.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Space">
+            <summary>Space.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Substract">
+            <summary>- or _.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Equal">
+            <summary>= or +.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.OpenBrackets">
+            <summary>[ or {.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.CloseBrackets">
+            <summary>] or }.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Backslash">
+            <summary>\ or |.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.NonUS">
+            <summary>Non-US keyboard character.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Semicolon">
+            <summary>; or :.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Quotes">
+            <summary>' or ".</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.GraveAccent">
+            <summary>` or ~.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Comma">
+            <summary>, or &lt;.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Period">
+            <summary>. or &gt;.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Divide">
+            <summary>/ or ?.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.CapsLock">
+            <summary>Caps Lock.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F1">
+            <summary>F1.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F2">
+            <summary>F2.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F3">
+            <summary>F3.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F4">
+            <summary>F4.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F5">
+            <summary>F5.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F6">
+            <summary>F6.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F7">
+            <summary>F7.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F8">
+            <summary>F8.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F9">
+            <summary>F9.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F10">
+            <summary>F10.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F11">
+            <summary>F11.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.F12">
+            <summary>F12.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.PrintScreen">
+            <summary>Print Screen.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.ScrollLock">
+            <summary>Scroll Lock.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Pause">
+            <summary>Pause.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Insert">
+            <summary>Insert.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Home">
+            <summary>Home.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.PageUp">
+            <summary>Page Up.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Delete">
+            <summary>Delete.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.End">
+            <summary>End.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.PageDown">
+            <summary>Page Down.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.RightArrow">
+            <summary>Right Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.LeftArrow">
+            <summary>Left Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.DownArrow">
+            <summary>Down Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.UpArrow">
+            <summary>Up Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.NumLock">
+            <summary>Num Lock.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadDivide">
+            <summary>Keypad /.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadMultiply">
+            <summary>Keypad *.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadSubstract">
+            <summary>Keypad -.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadAdd">
+            <summary>Keypad +.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadEnter">
+            <summary>Keypad Enter.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad1">
+            <summary>Keypad 1 or End.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad2">
+            <summary>Keypad 2 or Down Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad3">
+            <summary>Keypad 3 or Page Down.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad4">
+            <summary>Keypad 4 or Left Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad5">
+            <summary>Keypad 5.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad6">
+            <summary>Keypad 6 or Right Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad7">
+            <summary>Keypad 7 or Home.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad8">
+            <summary>Keypad 8 or Up Arrow.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad9">
+            <summary>Keypad 9 or Page Up.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Keypad0">
+            <summary>Keypad 0 or Insert.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.KeypadDelete">
+            <summary>Keypad . or Delete.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.NonUS2">
+            <summary>Non-US keyboard character.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.Application">
+            <summary>Application.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.LeftCtrl">
+            <summary>Left Ctrl.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.LeftShift">
+            <summary>Left Shift.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.LeftAlt">
+            <summary>Left Alt.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.LeftGUI">
+            <summary>Left GUI.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.RightCtrl">
+            <summary>Right Ctrl.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.RightShift">
+            <summary>Right Shift.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.RightAlt">
+            <summary>Right Alt.</summary>
+        </member>
+        <member name="F:GHI.Usb.Key.RightGUI">
+            <summary>Right GUI.</summary>
+        </member>
+        <member name="T:GHI.Usb.KeyState">
+            <summary>The possible key states.</summary>
+        </member>
+        <member name="F:GHI.Usb.KeyState.Released">
+            <summary>The key is released.</summary>
+        </member>
+        <member name="F:GHI.Usb.KeyState.Pressed">
+            <summary>The key is released.</summary>
+        </member>
+        <member name="T:GHI.Usb.HatSwitchDirection">
+            <summary>Joystick hat switch directions.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.Up">
+            <summary>Up.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.UpRight">
+            <summary>Up right.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.Right">
+            <summary>Right.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.DownRight">
+            <summary>Down right.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.Down">
+            <summary>Down.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.DownLeft">
+            <summary>Down left.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.Left">
+            <summary>Left.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.UpLeft">
+            <summary>Up left.</summary>
+        </member>
+        <member name="F:GHI.Usb.HatSwitchDirection.None">
+            <summary>Default position.</summary>
+        </member>
+        <member name="T:GHI.Usb.Position">
+            <summary>Represents the a generic position.</summary>
+        </member>
+        <member name="M:GHI.Usb.Position.op_Subtraction(GHI.Usb.Position,GHI.Usb.Position)">
+            <summary>Subtracts one position from another.</summary>
+            <param name="lhs">The position from which to subtract.</param>
+            <param name="rhs">The position to subtract.</param>
+            <returns>The new positon.</returns>
+        </member>
+        <member name="M:GHI.Usb.Position.ToString">
+            <summary>Returns a string representation of the position.</summary>
+            <returns>The position.</returns>
+        </member>
+        <member name="P:GHI.Usb.Position.X">
+            <summary>The X coordinate.</summary>
+        </member>
+        <member name="P:GHI.Usb.Position.Y">
+            <summary>The Y coordinate.</summary>
+        </member>
+        <member name="P:GHI.Usb.Position.Z">
+            <summary>The Z coordinate.</summary>
+        </member>
+        <member name="T:GHI.Usb.OperationTimedOutException">
+            <summary>The exception thrown when an operation times out.</summary>
+        </member>
+    </members>
+</doc>

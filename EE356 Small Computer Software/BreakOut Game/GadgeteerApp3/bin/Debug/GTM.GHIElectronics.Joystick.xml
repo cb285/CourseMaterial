@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GTM.GHIElectronics.Joystick</name>
+    </assembly>
+    <members>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.Joystick">
+            <summary>A Joystick module for .NET Gadgeteer.</summary>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.Joystick.#ctor(System.Int32)">
+            <summary>Constructs a new instance.</summary>
+            <param name="socketNumber">The mainboard socket that has the module plugged into it.</param>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.Joystick.GetPosition">
+            <summary>Gets position of the joystick.</summary>
+            <returns>The position.</returns>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.Joystick.Calibrate">
+            <summary>Calibrates the joystick such that the current position is interpreted as 0.</summary>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.Joystick.JoystickReleased">
+            <summary>Raised when the joystick is released.</summary>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.Joystick.JoystickPressed">
+            <summary>Raised when the joystick is pressed.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.Joystick.IsPressed">
+            <summary>Whether or not the joystick is pressed.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.Joystick.ReadSamples">
+            <summary>The number of times to sample the input before returning a value.</summary>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.Joystick.JoystickEventHandler">
+            <summary>Represents the delegate that is used to handle the <see cref="E:Gadgeteer.Modules.GHIElectronics.Joystick.JoystickReleased"/> and <see cref="E:Gadgeteer.Modules.GHIElectronics.Joystick.JoystickPressed"/> events.</summary>
+            <param name="sender">The <see cref="T:Gadgeteer.Modules.GHIElectronics.Joystick"/> object that raised the event.</param>
+            <param name="state">The state of the Joystick.</param>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.Joystick.ButtonState">
+            <summary>Represents the state of the <see cref="T:Gadgeteer.Modules.GHIElectronics.Joystick"/> object.</summary>
+        </member>
+        <member name="F:Gadgeteer.Modules.GHIElectronics.Joystick.ButtonState.Pressed">
+            <summary>The state of Joystick is pressed.</summary>
+        </member>
+        <member name="F:Gadgeteer.Modules.GHIElectronics.Joystick.ButtonState.Released">
+            <summary>The state of Joystick is released.</summary>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.Joystick.Position">
+            <summary>Structure that contains the X and Y position of the joystick from -1.0 to 1.0 (0.0 means centered).</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.Joystick.Position.X">
+            <summary>The X coordinate of the joystick from -1.0 to 1.0 (0.0 means centered).</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.Joystick.Position.Y">
+            <summary>The Y coordinate of the joystick from -1.0 to 1.0 (0.0 means centered).</summary>
+        </member>
+    </members>
+</doc>

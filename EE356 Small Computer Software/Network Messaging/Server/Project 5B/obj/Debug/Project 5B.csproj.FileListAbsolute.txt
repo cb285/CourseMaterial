@@ -1,0 +1,6 @@
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\bin\Debug\Project 5B.exe.config
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\obj\Debug\Project 5B.csprojResolveAssemblyReference.cache
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\obj\Debug\MainWindow.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\obj\Debug\App.g.cs
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\obj\Debug\Project 5B_MarkupCompile.cache
+C:\Users\brutu\Documents\School\EE356\Project 5B\Project 5B\obj\Debug\Project 5B_MarkupCompile.lref

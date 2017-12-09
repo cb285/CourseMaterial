@@ -1,0 +1,27 @@
+﻿<Window x:Class="Project4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project4"
+        mc:Ignorable="d"
+        Title="Discrete Convolution Animation" Height="607" Width="525"
+        Icon="icon.ico">
+    <Grid>
+        <TextBox x:Name="txtbox_input" HorizontalAlignment="Left" Height="23" Margin="300,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Type the system input values, separated by commas."/>
+        <TextBox x:Name="txtbox_impulseresp" HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Type the system impulse response values, separated by commas."/>
+        <Label x:Name="label_Input" Content="Input" HorizontalAlignment="Left" Margin="257,6,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Impulse" Content="Impulse Response" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="image_input" Height="150" Margin="10,92,0,0" VerticalAlignment="Top" Width="497" HorizontalAlignment="Left" ToolTip="System Input"/>
+        <Image x:Name="image_convolving" HorizontalAlignment="Left" Height="150" Margin="10,255,0,0" VerticalAlignment="Top" Width="497" ToolTip="Sliding Reversed Impulse Response / System Impulse Response"/>
+        <Image x:Name="image_output" HorizontalAlignment="Left" Height="150" Margin="10,420,0,0" VerticalAlignment="Top" Width="497" ToolTip="Output of each step / Result of convolution"/>
+        <Button x:Name="button_Start" Content="Start" HorizontalAlignment="Left" Margin="120,38,0,0" VerticalAlignment="Top" Width="60" Click="button_Start_Click" Height="20" ToolTip="Start the convolution"/>
+        <CheckBox x:Name="checkBox_StepThrough" Content="Step Mode" HorizontalAlignment="Left" Margin="34,41,0,0" VerticalAlignment="Top" ToolTip="Check this to step through the calculation using the arrows."/>
+        <Button x:Name="button_Back" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="300,38,0,0" VerticalAlignment="Top" Width="40" Click="button_Back_Click" ToolTip="Step backwards"/>
+        <Button x:Name="button_Forward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Width="40" Click="button_Forward_Click" ToolTip="Step forwards"/>
+        <Button x:Name="button_Finish" Content="Finish" HorizontalAlignment="Left" Margin="425,38,0,0" VerticalAlignment="Top" Width="75" Click="button_Finish_Click" ToolTip="Show the output of the convolution"/>
+        <Button x:Name="button_Ex1" Content="Ex 1" HorizontalAlignment="Left" Margin="435,10,0,0" VerticalAlignment="Top" Width="30" Click="button_Ex1_Click"/>
+        <Button x:Name="button_Ex2" Content="Ex 2" HorizontalAlignment="Left" Margin="470,10,0,0" VerticalAlignment="Top" Width="30" Click="button_Ex2_Click"/>
+
+    </Grid>
+</Window>

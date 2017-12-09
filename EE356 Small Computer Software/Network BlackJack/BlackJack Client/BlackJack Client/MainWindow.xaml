@@ -1,0 +1,41 @@
+﻿<Window x:Class="BlackJackClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJackClient"
+        mc:Ignorable="d"
+        Title="Client" Height="542" Width="600" Closing="Window_Closing">
+    <Grid x:Name="theGrid" Background="#FF5B9B00">
+        <Canvas x:Name="MyCanvas" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="592">
+
+            <Label x:Name="label_Bot" Content="Player" HorizontalAlignment="Left" Margin="275,375,0,110" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="label_BotLeft" Content="Player" HorizontalAlignment="Left" Margin="53,375,0,110" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="label_Right" Content="Player" HorizontalAlignment="Left" Margin="483,215,0,270" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="label_Left" Content="Player" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="55" Canvas.Top="215"/>
+            <Label x:Name="label_BotRight" Content="Player" HorizontalAlignment="Left" Margin="483,375,0,110" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="label_Dealer" Content="Dealer" HorizontalAlignment="Left" Margin="350,120,0,365" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Image x:Name="image_CardStack" HorizontalAlignment="Left" Height="100" Margin="200,20,0,0" VerticalAlignment="Top" Width="70" Source="CardImages/back.png"/>
+            <Label x:Name="label_LeftMoney" Content="$0" Canvas.Left="40" Canvas.Top="241" FontSize="10"/>
+            <Label x:Name="label_LeftBet" Content="Bet: $0" Canvas.Left="85" Canvas.Top="241" FontSize="10"/>
+            <Label x:Name="label_BotLeftMoney" Content="$0" Canvas.Left="40" Canvas.Top="401" FontSize="10"/>
+            <Label x:Name="label_BotLeftBet" Content="Bet: $0" Canvas.Left="85" Canvas.Top="401" FontSize="10"/>
+            <Label x:Name="label_BotMoney" Content="$0" FontSize="10" Margin="260,404,311,84" RenderTransformOrigin="0.476,0.261" Panel.ZIndex="1"/>
+            <Label x:Name="label_BotBet" Content="Bet: $0" FontSize="10" Margin="305,404,247,84"/>
+            <Label x:Name="label_BotRightMoney" Content="$0" FontSize="10" Margin="470,404,101,84"/>
+            <Label x:Name="label_BotRightBet" Content="Bet: $0" FontSize="10" Margin="515,404,37,84"/>
+            <Label x:Name="label_RightMoney" Content="$0" FontSize="10" Margin="470,242,101,246"/>
+            <Label x:Name="label_RightBet" Content="Bet: $0" FontSize="10" Margin="515,242,37,246"/>
+        </Canvas>
+
+        <TextBox x:Name="textBox_IP" HorizontalAlignment="Left" Height="23" Margin="10,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="127.0.0.1"/>
+        <TextBox x:Name="textBox_Port" HorizontalAlignment="Left" Height="23" Margin="135,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="9090"/>
+        <Button x:Name="button_Connect" Content="Connect" HorizontalAlignment="Left" Margin="185,481,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="button_Connect_Click"/>
+        <Label x:Name="label_IP" Content="IP" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Port" Content="Port" HorizontalAlignment="Left" Margin="135,455,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Bet" HorizontalAlignment="Left" Height="23" Margin="350,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button_Bet" Content="Bet" HorizontalAlignment="Left" Margin="475,481,0,0" VerticalAlignment="Top" Width="45" Click="button_Bet_Click" Height="23"/>
+        <Button x:Name="button_Hit" Content="Hit" HorizontalAlignment="Left" Margin="350,455,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="button_Hit_Click"/>
+        <Button x:Name="button_Stand" Content="Stand" HorizontalAlignment="Left" Margin="445,455,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="button_Stand_Click"/>
+    </Grid>
+</Window>

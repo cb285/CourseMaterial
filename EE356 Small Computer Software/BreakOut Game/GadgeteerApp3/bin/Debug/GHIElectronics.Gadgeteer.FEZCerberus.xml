@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GHIElectronics.Gadgeteer.FEZCerberus</name>
+    </assembly>
+    <members>
+        <member name="T:GHIElectronics.Gadgeteer.FEZCerberus">
+            <summary>The mainboard class for the FEZ Cerberus.</summary>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.#ctor">
+            <summary>Constructs a new instance.</summary>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.GetStorageDeviceVolumeNames">
+            <summary>The storage device volume names supported by this mainboard.</summary>
+            <returns>The volume names.</returns>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.MountStorageDevice(System.String)">
+            <summary>Mounts the device with the given name.</summary>
+            <param name="volumeName">The device to mount.</param>
+            <returns>Whether or not the mount was successful.</returns>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.UnmountStorageDevice(System.String)">
+            <summary>Unmounts the device with the given name.</summary>
+            <param name="volumeName">The device to unmount.</param>
+            <returns>Whether or not the unmount was successful.</returns>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.EnsureRgbSocketPinsAvailable">
+            <summary>Ensures that the RGB socket pins are available by disabling the display controller if needed.</summary>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.SetDebugLED(System.Boolean)">
+            <summary>Sets the state of the debug LED.</summary>
+            <param name="on">The new state.</param>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.SetProgrammingMode(Gadgeteer.Mainboard.ProgrammingInterface)">
+            <summary>Sets the programming mode of the device.</summary>
+            <param name="programmingInterface">The new programming mode.</param>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.PostInit">
+            <summary>This performs post-initialization tasks for the mainboard. It is called by Gadgeteer.Program.Run and does not need to be called manually.</summary>
+        </member>
+        <member name="M:GHIElectronics.Gadgeteer.FEZCerberus.OnOnboardControllerDisplayConnected(System.String,System.Int32,System.Int32,System.Int32,Gadgeteer.Modules.Module.DisplayModule.TimingRequirements)">
+            <summary>
+            Configure the onboard display controller to fulfil the requirements of a display using the RGB sockets. If doing this requires rebooting, then the method must reboot and not return. If
+            there is no onboard display controller, then NotSupportedException must be thrown.
+            </summary>
+            <param name="displayModel">Display model name.</param>
+            <param name="width">Display physical width in pixels, ignoring the orientation setting.</param>
+            <param name="height">Display physical height in lines, ignoring the orientation setting.</param>
+            <param name="orientationDeg">Display orientation in degrees.</param>
+            <param name="timing">The required timings from an LCD controller.</param>
+        </member>
+        <member name="P:GHIElectronics.Gadgeteer.FEZCerberus.MainboardName">
+            <summary>The name of the mainboard.</summary>
+        </member>
+        <member name="P:GHIElectronics.Gadgeteer.FEZCerberus.MainboardVersion">
+            <summary>The current version of the mainboard hardware.</summary>
+        </member>
+    </members>
+</doc>

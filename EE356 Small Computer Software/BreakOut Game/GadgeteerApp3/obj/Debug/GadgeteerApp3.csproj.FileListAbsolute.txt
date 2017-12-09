@@ -1,0 +1,212 @@
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.exe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.exe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GadgeteerApp3.exe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GadgeteerApp3.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHI.Hardware.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHI.Usb.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHI.Hardware.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GHI.Usb.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\GadgeteerApp3.Resources.resources
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\GadgeteerApp3.csproj.GenerateResource.Cache
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\GadgeteerApp3.Resources.tinyresources
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\TinyResGen.cache
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\be\GadgeteerApp3.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\be\GadgeteerApp3.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\le\GadgeteerApp3.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\le\GadgeteerApp3.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\GadgeteerApp3.exe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\obj\Debug\GadgeteerApp3.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pe
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pdbx
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.dll
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.pdb
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.xml
+C:\Classes\Fall 2015\EE_CS 356\Code Examples\GadgeteerApp3\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.exe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.exe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GadgeteerApp3.exe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GadgeteerApp3.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\le\GadgeteerApp3.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\be\GadgeteerApp3.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHI.Hardware.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHI.Usb.dll
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHI.Hardware.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\bin\Debug\GHI.Usb.xml
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\GadgeteerApp3.Resources.resources
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\GadgeteerApp3.csproj.GenerateResource.Cache
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\GadgeteerApp3.Resources.tinyresources
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\TinyResGen.cache
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\GadgeteerApp3.exe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\GadgeteerApp3.pdb
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\be\GadgeteerApp3.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\be\GadgeteerApp3.pdbx
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\le\GadgeteerApp3.pe
+C:\Classes\Fall 2016\EE_CS 356\Code Examples\GadgeteerApp3 - Copy\GadgeteerApp3\obj\Debug\le\GadgeteerApp3.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\le\BreakOut.exe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\be\BreakOut.exe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\le\BreakOut.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\be\BreakOut.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BreakOut.exe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BreakOut.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\le\BreakOut.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\le\BreakOut.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\be\BreakOut.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\be\BreakOut.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\Gadgeteer.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\Gadgeteer.SPI.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.Joystick.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHI.Hardware.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\LE\GHI.Usb.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\Gadgeteer.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\Gadgeteer.SPI.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHIElectronics.Gadgeteer.FEZCerberus.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.DisplayN18.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.Joystick.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GTM.GHIElectronics.USBClientSP.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHI.Hardware.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\BE\GHI.Usb.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHI.Hardware.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHI.Usb.dll
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\Gadgeteer.SPI.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHIElectronics.Gadgeteer.FEZCerberus.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.DisplayN18.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.Joystick.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GTM.GHIElectronics.USBClientSP.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHI.Hardware.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\bin\Debug\GHI.Usb.xml
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\TinyCLR_DebugReferences.cache
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\BreakOut.Resources.resources
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\GadgeteerApp3.csproj.GenerateResource.Cache
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\BreakOut.Resources.tinyresources
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\TinyResGen.cache
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\be\BreakOut.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\be\BreakOut.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\le\BreakOut.pe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\le\BreakOut.pdbx
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\BreakOut.exe
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\BreakOut.pdb
+C:\Users\brutu\Documents\School\EE356\BreakOut\GadgeteerApp3\obj\Debug\GadgeteerApp3.csprojResolveAssemblyReference.cache
