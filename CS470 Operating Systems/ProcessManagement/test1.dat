@@ -1,0 +1,30 @@
+C 1 25
+I
+C 2 12
+I
+W 4
+C 3 10
+I
+E 4
+I
+I
+I
+I
+C 5 6
+C 6 3
+W 7
+I
+W 5
+I
+I
+I
+E 7
+I
+I
+E 5
+I
+I
+W 3
+I
+I
+X

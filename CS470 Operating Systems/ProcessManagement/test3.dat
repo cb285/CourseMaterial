@@ -1,0 +1,50 @@
+C 1 10
+I
+I
+W 1
+C 2 10
+I
+I
+W 2
+D 1
+C 3 10
+C 4 10
+C 5 10
+C 6 10
+C 7 10
+C 8 10
+W 3
+W 4
+W 5
+I
+I
+I
+D 7
+I
+I
+I
+I
+E 2
+I
+I
+E 5
+I
+I
+I
+D 7
+I
+I
+I
+I
+I
+I
+I
+D 3
+I
+I
+I
+I
+I
+I
+I
+X

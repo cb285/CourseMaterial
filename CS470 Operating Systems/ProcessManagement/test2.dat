@@ -1,0 +1,54 @@
+C 1 20
+C 2 10
+C 3 15
+I
+C 4 7
+I
+I
+I
+C 5 9
+W 1
+I
+I
+W 2
+I
+I
+I
+E 1
+I
+I
+I
+E 2
+D 4
+I
+I
+I
+I
+I
+W 3
+I
+I
+I
+I
+E 3
+I
+I
+I
+I
+I
+I
+I
+I
+I
+W 4
+W 5
+I
+E 5
+I
+I
+I
+I
+I
+I
+I
+X
